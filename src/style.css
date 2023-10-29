@@ -3,11 +3,65 @@
     padding: 0;
     box-sizing: border-box;
     --main-color: #F5F5DC;
+    --orange-accent: #F84312;
+    --plat-accent: #DCE3E4;
+    --rose-accent: #EED3D7;
+    --dark--accent: #090A0B;
+    --footer-hover: #F96339;
 }
 
 .content{
     background: var(--main-color);
     width: 100%;
     height: 100vh;
-    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 4fr 1fr;
+}
+
+.footer{
+    grid-column: 1/3;
+    grid-row: 3/4;
+    width: 100%;
+    background: var(--orange-accent);
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    grid-template-rows: 2.5fr 1fr;
+    justify-items: center;
+}
+
+.empty-container{
+    grid-row: 1/2;
+    grid-column: 1/3;
+    width: 100%;
+    background: var(--main-color);
+}
+
+.footer .add-task-btn{
+    background: var(--orange-accent);
+    cursor: pointer;
+    grid-row: 1/3;
+    grid-column: 1/3;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    position: relative;
+    top: 80px;
+    border: 6px solid var(--main-color);
+    transition: background 0.3s ease-in;
+}
+
+.footer .add-task-btn:hover{
+    background-color: var(--footer-hover);
+}
+
+.footer .menu-btn{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    width: 50%;
+    transition: background 0.3s ease-in;
 }
