@@ -2,12 +2,14 @@
 @import url(./sidemenu.css);
 
 :root{
-    --main-color: #F5F5DC;
+    --main-color: #F7F4F3;
     --orange-accent: #F84312;
     --plat-accent: #DCE3E4;
     --rose-accent: #EED3D7;
     --dark--accent: #090A0B;
     --footer-hover: #F96339;
+    --sidebar-color: #EFE8E6;
+    --main-border: #ccc;
 }
 
 *{
@@ -27,6 +29,5 @@
 .main-body{
     grid-row: 2/3;
     grid-column: 1/3;
-    border: 1px solid black;
     width: 100%;
 }

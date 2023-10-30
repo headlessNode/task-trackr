@@ -1,4 +1,44 @@
 .sidebar{
     display: none;
-    border: 1px solid black;
+    padding-top: 10px;
+    border-right: 1px solid var(--main-border);
+    border-top: 1px solid var(--main-border);
+    border-top-right-radius: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    background: var(--sidebar-color);
+    color: var(--dark-accent);
+    grid-template-rows: repeat(3,0.5fr) 5fr;
+    justify-items: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sidebar button{
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    align-items: center;
+    justify-items: start;
+    gap: 1rem;
+    padding-left: 1rem;
+    width: 90%;
+    height: 100%;
+    background: none;
+    border-radius: 10px;
+    border: none;
+}
+
+.sidebar button:hover{
+    background: var(--main-color);
+}
+
+.projects{
+    grid-row: 4/5;
+    width: 90%;
+    height: 90%;
+    display: grid;
+    grid-template-rows: repeat(9,1fr);
+}
+.projects button{
+    width: 100%;
 }

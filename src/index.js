@@ -33,7 +33,30 @@ footer.appendChild(menuBtn);
 //sidemenu
 const sideMenu = document.createElement('div');
 sideMenu.classList.add('sidebar');
-sideMenu.innerHTML = '<div class="inbox">Inbox</div><div class="today">Today</div><div class="this-week">This week</div>';
+const inbox = document.createElement('button');
+inbox.classList.add('inbox');
+inbox.innerHTML = '<i class="fa-solid fa-inbox fa-lg" style="color: #5089ED;"></i><p>Inbox</p>';
+sideMenu.appendChild(inbox);
+const today = document.createElement('button');
+today.classList.add('today');
+today.innerHTML = '<i class="fa-solid fa-calendar-day fa-lg" style="color: #37A056;"></i><p>Today</p>';
+sideMenu.appendChild(today);
+const upcoming = document.createElement('button');
+upcoming.classList.add('upcoming');
+upcoming.innerHTML = '<i class="fa-solid fa-calendar-week fa-lg" style="color: #A366FF;"></i><p>Upcoming</p>';
+sideMenu.appendChild(upcoming);
+
+const projects = document.createElement('div');
+projects.classList.add('projects');
+const projectsHeader = document.createElement('div');
+projectsHeader.innerHTML = '<h2>Projects</h2>';
+projects.appendChild(projectsHeader);
+const addProjects = document.createElement('button');
+addProjects.classList.add('add-projects');
+addProjects.innerHTML = '<i class="fa-solid fa-plus fa-lg" style="color: #000000;"></i><p>Add Project</p>'
+projects.appendChild(addProjects);
+
+sideMenu.appendChild(projects);
 
 content.appendChild(mainBody);
 content.appendChild(footer);
