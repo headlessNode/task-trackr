@@ -66,7 +66,7 @@ menuBtn.addEventListener('click', ()=>{
     if(sideMenu.style.display === 'none' || sideMenu.style.display === ''){
         sideMenu.style.display = 'grid';
         sideMenu.style.gridColumn = '1/2';
-        sideMenu.style.gridRow = '2/4';
+        sideMenu.style.gridRow = '1/4';
         mainBody.style.gridColumn = '2/3';
         footer.style.gridColumn = '2/3';
     }

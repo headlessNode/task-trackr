@@ -1,12 +1,13 @@
 
 .footer{
+    position: sticky;
     grid-column: 1/3;
     grid-row: 3/4;
     width: 100%;
     background: var(--orange-accent);
     display: grid;
     grid-template-columns: 1fr 8fr;
-    grid-template-rows: 2.5fr 1fr;
+    grid-template-rows: 1fr 1fr;
     justify-items: center;
 }
 
@@ -25,9 +26,8 @@
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
-    position: relative;
-    top: 80px;
-    border: 6px solid var(--main-color);
+    align-self: center;
+    border: 0.35rem solid var(--main-color);
     transition: background 0.3s ease-in;
 }
 
