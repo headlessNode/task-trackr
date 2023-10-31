@@ -2,35 +2,12 @@ import './styles/style.css'
 
 const content = document.querySelector('.content');
 
-//mainbody
+//mainbody DOM
 const mainBody = document.createElement('div');
 mainBody.classList.add('main-body');
 mainBody.textContent = 'MAIN BODY';
 
-//Footer
-const footer = document.createElement('div');
-footer.classList.add('footer');
-
-const menuBtn = document.createElement('button');
-menuBtn.classList.add('menu-btn');
-menuBtn.innerHTML = '<i class="fa-solid fa-bars fa-xl" style="color: #dce3e4;"></i>';
-
-
-//for styling
-const emptyContainer = document.createElement('div');
-emptyContainer.classList.add('empty-container');
-
-
-
-const addTaskBtn = document.createElement('button');
-addTaskBtn.classList.add('add-task-btn');
-addTaskBtn.innerHTML = '<i class="fa-solid fa-plus fa-lg" style="color: #dce3e4;"></i>';
-
-footer.appendChild(emptyContainer);
-footer.appendChild(addTaskBtn);
-footer.appendChild(menuBtn);
-
-//sidemenu
+//sidemenu DOM
 const sideMenu = document.createElement('div');
 sideMenu.classList.add('sidebar');
 const title = document.createElement('h2');
@@ -63,11 +40,37 @@ projectsHeader.appendChild(addProjects);
 
 sideMenu.appendChild(projects);
 
+
+//Footer DOM
+const footer = document.createElement('div');
+footer.classList.add('footer');
+
+const menuBtn = document.createElement('button');
+menuBtn.classList.add('menu-btn');
+menuBtn.innerHTML = '<i class="fa-solid fa-bars fa-xl" style="color: #dce3e4;"></i>';
+
+
+//for styling
+const emptyContainer = document.createElement('div');
+emptyContainer.classList.add('empty-container');
+
+
+
+const addTaskBtn = document.createElement('button');
+addTaskBtn.classList.add('add-task-btn');
+addTaskBtn.innerHTML = '<i class="fa-solid fa-plus fa-lg" style="color: #dce3e4;"></i>';
+
+footer.appendChild(emptyContainer);
+footer.appendChild(addTaskBtn);
+footer.appendChild(menuBtn);
+
+//Add elements to page
 content.appendChild(mainBody);
 content.appendChild(footer);
 content.appendChild(sideMenu);
 
-function hideSideMenu(){
+//Logic for hiding and showing menu on btn click
+function hideandShowSideMenu(){
     if(sideMenu.style.display === 'none' || sideMenu.style.display === ''){
         if(window.innerWidth <= 651){
             sideMenu.style.display = 'grid';
@@ -123,7 +126,8 @@ function hideSideMenu(){
     }
 }
 
-menuBtn.addEventListener('click', hideSideMenu);
+//Menu btn click event
+menuBtn.addEventListener('click', hideandShowSideMenu);
 
 
 //event listener for screensize changes
