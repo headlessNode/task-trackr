@@ -28,10 +28,12 @@
 .title{
     opacity: 0;
     transition: all 1s ease;
-    width: 100%;
+    width: 90%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
 
 .sidebar .inbox, .sidebar .today, .sidebar .upcoming{
@@ -86,7 +88,7 @@
     border-radius: 50%;
 }
 
-@media (max-width: 651px) {
+@media screen and (max-width: 651px) {
     .sidebar{
         width: 0%;
         height: 0;

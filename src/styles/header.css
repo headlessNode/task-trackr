@@ -1,8 +1,14 @@
-.header{
-    border: 1px solid;
+.header-container{
     grid-column: 1/3;
-    grid-row: 1/2;
     display: flex;
     justify-content: center;
+    padding-top: 2rem;
+}
+.header{
+    width: 230px;
+    height: 100%;
+    justify-self: center;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
 }

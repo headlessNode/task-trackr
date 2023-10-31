@@ -11,16 +11,19 @@ content.appendChild(mainBody);
 //header footer and sidemenu DOM
 let defaultPageSetup = (()=>{
     //header DOM
+    const headerContainer = document.createElement('div');
+    headerContainer.classList.add('header-container');
     const header = document.createElement('div');
     header.classList.add('header');
-    header.innerHTML = '<h1>Task Trackr</h1>';
+    header.innerHTML = '<i class="icon fa-solid fa-rotate-90 fa-clipboard-list fa-2xl" style="color: #090a0b;"></i><h1>Task Trackr</h1>';
+    headerContainer.appendChild(header);
 
     //sidemenu DOM
     const sideMenu = document.createElement('div');
     sideMenu.classList.add('sidebar');
-    const title = document.createElement('h2');
+    const title = document.createElement('div');
     title.classList.add('title');
-    title.textContent = 'Task Trackr';
+    title.innerHTML = '<i class="icon fa-solid fa-rotate-90 fa-clipboard-list fa-xl" style="color: #090a0b;"></i><h2>Task Trackr</h2>';
     sideMenu.appendChild(title);
     const inbox = document.createElement('button');
     inbox.classList.add('inbox');
@@ -65,11 +68,11 @@ let defaultPageSetup = (()=>{
     footer.appendChild(menuBtn);
 
     //Add elements to page
-    content.appendChild(header);
+    content.appendChild(headerContainer);
     content.appendChild(footer);
     content.appendChild(sideMenu);
 
-    return {menuBtn, addTaskBtn, sideMenu, footer, title,inbox,today,upcoming,projects,addProjects, projectsHeader};
+    return {menuBtn, addTaskBtn, sideMenu, footer, title,inbox,today,upcoming,projects,addProjects, projectsHeader, headerContainer};
 
 })();
 
@@ -81,6 +84,7 @@ function hideandShowSideMenu(){
             defaultPageSetup.sideMenu.style.gridColumn = '1/3';
             defaultPageSetup.sideMenu.style.gridRow = '1/2';
             mainBody.style.gridColumn = '1/3';
+            defaultPageSetup.headerContainer.style.display = 'none';
             defaultPageSetup.footer.style.gridColumn = '1/3';
             window.scrollTo({top: 0, behavior: 'smooth'});
             defaultPageSetup.sideMenu.style.height = '100%';
@@ -98,6 +102,7 @@ function hideandShowSideMenu(){
             defaultPageSetup.sideMenu.style.gridColumn = '1/2';
             defaultPageSetup.sideMenu.style.gridRow = '1/4';
             mainBody.style.gridColumn = '2/3';
+            defaultPageSetup.headerContainer.style.gridColumn = '2/3';
             defaultPageSetup.footer.style.gridColumn = '2/3';
             window.scrollTo({top: 0, behavior: 'smooth'});
             defaultPageSetup.sideMenu.style.width = '100%';
@@ -114,6 +119,9 @@ function hideandShowSideMenu(){
     else{
         defaultPageSetup.sideMenu.style.display = 'none'
         mainBody.style.gridColumn = '1/3';
+        defaultPageSetup.headerContainer.style.display = 'grid';
+        defaultPageSetup.headerContainer.style.gridColumn = '1/3';
+        defaultPageSetup.headerContainer.style.gridRow = '1/2';
         defaultPageSetup.footer.style.gridColumn = '1/3';
         window.scrollTo({top: 0, behavior: 'smooth'});
         defaultPageSetup.sideMenu.style.width = '0';
@@ -141,12 +149,17 @@ window.addEventListener('resize', ()=>{
         defaultPageSetup.sideMenu.style.gridColumn = '1/3';
         defaultPageSetup.sideMenu.style.gridRow = '1/2';
         mainBody.style.gridColumn = '1/3';
+        defaultPageSetup.headerContainer.style.display = 'none';
+        defaultPageSetup.headerContainer.style.gridColumn = '1/3';
         defaultPageSetup.footer.style.gridColumn = '1/3';
     }
     else if(window.innerWidth > 651 && defaultPageSetup.sideMenu.style.display === 'grid'){
         defaultPageSetup.sideMenu.style.gridColumn = '1/2';
         defaultPageSetup.sideMenu.style.gridRow = '1/4';
         mainBody.style.gridColumn = '2/3';
+        defaultPageSetup.headerContainer.style.display = 'grid';
+        defaultPageSetup.headerContainer.style.gridColumn = '2/3';
+        defaultPageSetup.headerContainer.style.gridRow = '1/2';
         defaultPageSetup.footer.style.gridColumn = '2/3';
     }
 });
