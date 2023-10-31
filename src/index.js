@@ -33,6 +33,10 @@ footer.appendChild(menuBtn);
 //sidemenu
 const sideMenu = document.createElement('div');
 sideMenu.classList.add('sidebar');
+const title = document.createElement('h2');
+title.classList.add('title');
+title.textContent = 'Task Trackr';
+sideMenu.appendChild(title);
 const inbox = document.createElement('button');
 inbox.classList.add('inbox');
 inbox.innerHTML = '<i class="fa-solid fa-inbox fa-lg" style="color: #5089ED;"></i><p>Inbox</p>';
@@ -49,12 +53,13 @@ sideMenu.appendChild(upcoming);
 const projects = document.createElement('div');
 projects.classList.add('projects');
 const projectsHeader = document.createElement('div');
+projectsHeader.classList.add('projects-header');
 projectsHeader.innerHTML = '<h2>Projects</h2>';
 projects.appendChild(projectsHeader);
 const addProjects = document.createElement('button');
 addProjects.classList.add('add-projects');
-addProjects.innerHTML = '<i class="fa-solid fa-plus fa-lg" style="color: #000000;"></i><p>Add Project</p>'
-projects.appendChild(addProjects);
+addProjects.innerHTML = '<i class="fa-solid fa-plus fa-lg" style="color: #000000;"></i>'
+projectsHeader.appendChild(addProjects);
 
 sideMenu.appendChild(projects);
 
@@ -62,17 +67,46 @@ content.appendChild(mainBody);
 content.appendChild(footer);
 content.appendChild(sideMenu);
 
-menuBtn.addEventListener('click', ()=>{
+function hideSideMenu(){
     if(sideMenu.style.display === 'none' || sideMenu.style.display === ''){
-        sideMenu.style.display = 'grid';
-        sideMenu.style.gridColumn = '1/2';
-        sideMenu.style.gridRow = '1/4';
-        mainBody.style.gridColumn = '2/3';
-        footer.style.gridColumn = '2/3';
+        if(window.innerWidth <= 651){
+            sideMenu.style.display = 'grid';
+            sideMenu.style.gridColumn = '1/3';
+            sideMenu.style.gridRow = '1/2';
+            mainBody.style.gridColumn = '1/3';
+            footer.style.gridColumn = '1/3';
+        }
+        else{
+            sideMenu.style.display = 'grid';
+            sideMenu.style.gridColumn = '1/2';
+            sideMenu.style.gridRow = '1/4';
+            mainBody.style.gridColumn = '2/3';
+            footer.style.gridColumn = '2/3';
+        }
     }
     else{
         sideMenu.style.display = 'none'
         mainBody.style.gridColumn = '1/3';
         footer.style.gridColumn = '1/3';
+    }
+}
+
+menuBtn.addEventListener('click', hideSideMenu);
+
+
+//event listener for screensize changes
+window.addEventListener('resize', ()=>{
+    let screenWidth = window.innerWidth;
+    if(window.innerWidth <= 651 && sideMenu.style.display === 'grid'){
+        sideMenu.style.gridColumn = '1/3';
+        sideMenu.style.gridRow = '1/2';
+        mainBody.style.gridColumn = '1/3';
+        footer.style.gridColumn = '1/3';
+    }
+    else if(window.innerWidth > 651 && sideMenu.style.display === 'grid'){
+        sideMenu.style.gridColumn = '1/2';
+        sideMenu.style.gridRow = '1/5';
+        mainBody.style.gridColumn = '2/3';
+        footer.style.gridColumn = '2/3';
     }
 });

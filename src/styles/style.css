@@ -6,7 +6,7 @@
     --orange-accent: #F84312;
     --plat-accent: #DCE3E4;
     --rose-accent: #EED3D7;
-    --dark--accent: #090A0B;
+    --dark-accent: #090A0B;
     --footer-hover: #F96339;
     --sidebar-color: #EFE8E6;
     --main-border: #ccc;
@@ -16,6 +16,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
 }
 .content{
     background: var(--main-color);
@@ -27,7 +28,13 @@
 }
 
 .main-body{
-    grid-row: 1/3;
+    grid-row: 2/3;
     grid-column: 1/3;
     width: 100%;
+    border: 1px solid black;
+    display: grid;
+    justify-items: center;
+    align-items: center;
 }
+
+

@@ -1,22 +1,39 @@
 .sidebar{
     display: none;
-    padding-top: 10px;
+    padding-top: 3rem;
     border-right: 1px solid var(--main-border);
     border-top: 1px solid var(--main-border);
     border-top-right-radius: 10px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     background: var(--sidebar-color);
     color: var(--dark-accent);
-    grid-template-rows: repeat(3,0.5fr) 5fr;
+    grid-template-rows: 0.5fr repeat(3,0.5fr) 5fr;
     justify-items: center;
     align-items: center;
     gap: 1rem;
 }
 
-.sidebar button{
+.inbox{
+    grid-row: 2/3;
+}
+.today{
+    grid-row: 3/4;
+}
+.upcoming{
+    grid-row: 4/5;
+}
+
+.title{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar .inbox, .sidebar .today, .sidebar .upcoming{
     cursor: pointer;
     display: grid;
-    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
     justify-items: start;
     gap: 1rem;
@@ -33,12 +50,47 @@
 }
 
 .projects{
-    grid-row: 4/5;
+    grid-row: 5/6;
     width: 90%;
     height: 90%;
     display: grid;
-    grid-template-rows: repeat(9,1fr);
+    align-items: center;
+    justify-items: center;
+    grid-template-rows: repeat(auto-fit, 2rem);
+    gap: 1rem;
 }
-.projects button{
+.projects-header{
     width: 100%;
+    display:grid;
+    grid-template-columns: 1fr 5fr 1fr;
+}
+
+.projects-header .add-projects{
+    grid-column: 3/4;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background: none;
+    border-radius: 50%;
+}
+
+@media (max-width: 651px) {
+    .sidebar{
+        display: hidden;
+        border-right: initial;
+        border-top: initial;
+        border-top-right-radius: initial;
+        box-shadow: initial;
+        padding-top: 1rem;
+        grid-template-rows: 0.5fr repeat(3,3rem) 5fr;
+    }
+    .title{
+        height: 3rem;
+    }
+    .projects-header{
+        gap: ;
+    }
+    .sidebar .inbox, .sidebar .today, .sidebar .upcoming{
+        grid-template-columns: 0.2fr 2fr 0.4fr;
+    }
 }
