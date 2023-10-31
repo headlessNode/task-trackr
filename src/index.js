@@ -75,6 +75,7 @@ function hideSideMenu(){
             sideMenu.style.gridRow = '1/2';
             mainBody.style.gridColumn = '1/3';
             footer.style.gridColumn = '1/3';
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
         else{
             sideMenu.style.display = 'grid';
@@ -82,12 +83,14 @@ function hideSideMenu(){
             sideMenu.style.gridRow = '1/4';
             mainBody.style.gridColumn = '2/3';
             footer.style.gridColumn = '2/3';
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     }
     else{
         sideMenu.style.display = 'none'
         mainBody.style.gridColumn = '1/3';
         footer.style.gridColumn = '1/3';
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 }
 
@@ -105,7 +108,7 @@ window.addEventListener('resize', ()=>{
     }
     else if(window.innerWidth > 651 && sideMenu.style.display === 'grid'){
         sideMenu.style.gridColumn = '1/2';
-        sideMenu.style.gridRow = '1/5';
+        sideMenu.style.gridRow = '1/4';
         mainBody.style.gridColumn = '2/3';
         footer.style.gridColumn = '2/3';
     }

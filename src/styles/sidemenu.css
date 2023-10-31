@@ -87,9 +87,6 @@
     .title{
         height: 3rem;
     }
-    .projects-header{
-        gap: ;
-    }
     .sidebar .inbox, .sidebar .today, .sidebar .upcoming{
         grid-template-columns: 0.2fr 2fr 0.4fr;
     }
