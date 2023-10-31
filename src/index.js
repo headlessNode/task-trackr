@@ -94,6 +94,7 @@ function hideSideMenu(){
             footer.style.gridColumn = '2/3';
             window.scrollTo({top: 0, behavior: 'smooth'});
             sideMenu.style.width = '100%';
+            sideMenu.style.height = '100%';
             title.style.opacity = '1';
             inbox.style.opacity = '1';
             today.style.opacity = '1';
