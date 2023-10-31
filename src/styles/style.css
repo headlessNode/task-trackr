@@ -1,5 +1,6 @@
 @import url(./footer.css);
 @import url(./sidemenu.css);
+@import url(./header.css);
 
 :root{
     --main-color: #F7F4F3;
@@ -35,7 +36,7 @@
     min-height: var(--main-body-height);
     height: auto;
     width: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: grid;
     justify-items: center;
     align-items: center;
