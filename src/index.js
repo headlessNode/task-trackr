@@ -76,6 +76,15 @@ function hideSideMenu(){
             mainBody.style.gridColumn = '1/3';
             footer.style.gridColumn = '1/3';
             window.scrollTo({top: 0, behavior: 'smooth'});
+            sideMenu.style.height = '100%';
+            sideMenu.style.width = '100%';
+            title.style.opacity = '1';
+            inbox.style.opacity = '1';
+            today.style.opacity = '1';
+            upcoming.style.opacity = '1';
+            projects.style.opacity = '1';
+            addProjects.style.opacity = '1';
+            projectsHeader.style.opacity = '1';
         }
         else{
             sideMenu.style.display = 'grid';
@@ -84,6 +93,14 @@ function hideSideMenu(){
             mainBody.style.gridColumn = '2/3';
             footer.style.gridColumn = '2/3';
             window.scrollTo({top: 0, behavior: 'smooth'});
+            sideMenu.style.width = '100%';
+            title.style.opacity = '1';
+            inbox.style.opacity = '1';
+            today.style.opacity = '1';
+            upcoming.style.opacity = '1';
+            projects.style.opacity = '1';
+            addProjects.style.opacity = '1';
+            projectsHeader.style.opacity = '1';
         }
     }
     else{
@@ -91,6 +108,17 @@ function hideSideMenu(){
         mainBody.style.gridColumn = '1/3';
         footer.style.gridColumn = '1/3';
         window.scrollTo({top: 0, behavior: 'smooth'});
+        sideMenu.style.width = '0';
+        title.style.opacity = '0';
+        inbox.style.opacity = '0';
+        today.style.opacity = '0';
+        upcoming.style.opacity = '0';
+        projects.style.opacity = '0';
+        addProjects.style.opacity = '0';
+        projectsHeader.style.opacity = '0';
+        if(window.innerWidth <= 651){
+            sideMenu.style.height = '0';
+        }
     }
 }
 

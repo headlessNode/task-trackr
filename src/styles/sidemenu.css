@@ -1,5 +1,7 @@
 .sidebar{
     display: none;
+    width: 0;
+    transition: all 0.3s ease;
     padding-top: 3rem;
     border-right: 1px solid var(--main-border);
     border-top: 1px solid var(--main-border);
@@ -24,13 +26,17 @@
 }
 
 .title{
-    width: 90%;
+    opacity: 0;
+    transition: all 1s ease;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .sidebar .inbox, .sidebar .today, .sidebar .upcoming{
+    opacity: 0;
+    transition: all 1s ease;
     cursor: pointer;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -50,6 +56,8 @@
 }
 
 .projects{
+    opacity: 0;
+    transition: all 1s ease;
     grid-row: 5/6;
     width: 90%;
     height: 90%;
@@ -60,12 +68,16 @@
     gap: 1rem;
 }
 .projects-header{
+    opacity: 0;
+    transition: all 1s ease;
     width: 100%;
     display:grid;
     grid-template-columns: 1fr 5fr 1fr;
 }
 
 .projects-header .add-projects{
+    opacity: 0;
+    transition: all 1s ease;
     grid-column: 3/4;
     width: 2rem;
     height: 2rem;
@@ -76,6 +88,8 @@
 
 @media (max-width: 651px) {
     .sidebar{
+        width: 0%;
+        height: 0;
         display: hidden;
         border-right: initial;
         border-top: initial;
