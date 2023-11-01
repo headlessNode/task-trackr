@@ -50,17 +50,22 @@
     justify-self: center;
 }
 
-.main-content{
+.main-body-content{
     grid-row: 2/3;
     grid-column: 2/4;
     border: 1px solid;
+    padding: 0 1rem 0 1rem;
     display: grid;
+    grid-template-rows: repeat(auto-fit,minmax(100px, 1fr));
 }
 @media screen and (max-width: 370px) {
-    .main-content{
+    .main-body-content{
         grid-column: 1/4;
     }
-    .main-body h2{
-        grid-column: 1/2;
+}
+
+@media screen and (max-width: 651px) {
+    .main-body{
+        padding: 0;
     }
 }
