@@ -1,3 +1,5 @@
+import { getInfoFromDialog } from "./DOM";
+
 //Logic for hiding and showing menu on btn click
 export function hideandShowSideMenu(){
     const sideMenu = document.querySelector('.sidebar');
@@ -96,3 +98,11 @@ export const listenToScreenChanges = ()=>{
         footer.style.gridColumn = '2/3';
     }
 };
+
+export function addTask(){
+    console.log('addTaskBtn clicked');
+    //call the function in DOM.js which displays dialog for adding task information and return that information.
+    getInfoFromDialog();
+    //call the function in inbox.js which creates a task based on the information received from the DOM.js
+
+}

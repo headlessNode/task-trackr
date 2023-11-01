@@ -58,6 +58,17 @@
     display: grid;
     grid-template-rows: repeat(auto-fit,minmax(100px, 1fr));
 }
+
+.task-dialog{
+    top: 120%;
+    margin: 0 auto 0 auto;
+    width: 250px;
+    transition: top 0.5s ease;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
 @media screen and (max-width: 370px) {
     .main-body-content{
         grid-column: 1/4;

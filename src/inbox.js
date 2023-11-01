@@ -5,4 +5,10 @@ class Task {
         this.dueDate = dueDate;
         this.priority = priority;
     }
+};
+
+export function createTaskObject(title,description,dueDate,priority){
+    let task = new Task(title, description,dueDate,priority);
+
+    
 }

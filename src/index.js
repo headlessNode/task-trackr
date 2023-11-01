@@ -1,16 +1,18 @@
 import './styles/style.css'
-import { appendToPage,createPageHeader,createMainBody,createSideMenu, createFooter } from './DOM'
-import { hideandShowSideMenu,listenToScreenChanges } from './eventHandling';
+import { appendToPage,createPageHeader,createMainBody,createSideMenu, createFooter, taskInfoDialog } from './DOM'
+import { hideandShowSideMenu,listenToScreenChanges,addTask } from './eventHandling';
 
 const pageHeader = createPageHeader();
 const mainBody = createMainBody();
 const sideMenu = createSideMenu();
 const footer = createFooter();
+const dialog = taskInfoDialog();
 
 appendToPage(pageHeader);
 appendToPage(mainBody);
 appendToPage(sideMenu);
 appendToPage(footer);
+appendToPage(dialog);
 
 //EVENTS
 const events = (()=>{
@@ -19,4 +21,9 @@ const events = (()=>{
     menuBtn.addEventListener('click', hideandShowSideMenu);
     //event listener for screensize changes
     window.addEventListener('resize', listenToScreenChanges);
+
+    //event listener for add task event
+    const addTaskBtn = document.querySelector('.add-task-btn');
+    addTaskBtn.addEventListener('click', addTask);
+
 })();

@@ -94,13 +94,72 @@ export function createFooter(){
 
 }
 
+export function taskInfoDialog(){
+    const dialog = document.createElement('dialog');
+    dialog.classList.add('task-dialog');
+    const dialogForm = document.createElement('form');
+    dialogForm.classList.add('dialog-form');
+    //TITLE
+    const title = document.createElement('input');
+    title.setAttribute('type', 'text');
+    title.setAttribute('placeholder', 'Title');
+    title.setAttribute('required', 'true');
 
-// //event listener for add task event
-// defaultPageSetup.addTaskBtn('click', ()=>{
-//     console.log('addTaskbtn clicked');
-// });
+    //DESCRIPTION
+    const description = document.createElement('input');
+    description.setAttribute('type', 'text');
+    description.setAttribute('placeholder', 'Description');
+    description.setAttribute('required', 'true');
+
+    //DUE DATE
+    const dueDate = document.createElement('input');
+    dueDate.setAttribute('type', 'date');
+    dueDate.setAttribute('required', 'true');
+
+    //PRIORITY
+    const priority = document.createElement('fieldset');
+    const priorityLegend = document.createElement('legend');    
+    priorityLegend.textContent = 'Select task priority:';
+    priority.appendChild(priorityLegend);    
+    //high priority
+    const high = document.createElement('div');
+    high.classList.add('high-priority');
+    high.innerHTML = '<input type="radio" id="high" name="priority" value="high" checked /><label for="high">High</label>';
+    priority.appendChild(high);
+    //medium priority
+    const medium = document.createElement('div');
+    medium.classList.add('medium-priority');
+    medium.innerHTML = '<input type="radio" id="medium" name="priority" value="medium" /><label for="medium">Medium</label>';
+    priority.appendChild(medium);
+    //low priority
+    const low = document.createElement('div');
+    low.classList.add('low-priority');
+    low.innerHTML = '<input type="radio" id="low" name="priority" value="low" /><label for="low">Low</label>';
+    priority.appendChild(low);
 
 
 
+    //SUBMIT BTN
+    const submit = document.createElement('button');
+    submit.classList.add('submit-btn');
+    submit.setAttribute('type', 'submit');
+    submit.textContent = 'Submit';
+
+    dialogForm.appendChild(title);
+    dialogForm.appendChild(description);
+    dialogForm.appendChild(dueDate);
+    dialogForm.appendChild(priority);
+    dialogForm.appendChild(submit);
+
+    dialog.appendChild(dialogForm);
 
 
+    return dialog;
+}
+
+export function getInfoFromDialog(){
+    const dialog = document.querySelector('.task-dialog');
+    dialog.showModal();
+    dialog.style.top = '50%';
+
+}
