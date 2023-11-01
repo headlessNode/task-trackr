@@ -5,7 +5,16 @@ const content = document.querySelector('.content');
 //mainbody DOM
 const mainBody = document.createElement('div');
 mainBody.classList.add('main-body');
-mainBody.textContent = 'MAIN BODY';
+const mainBodyHeader = document.createElement('h2');
+mainBodyHeader.textContent = 'Header';
+
+const mainBodyContent = document.createElement('div');
+mainBodyContent.classList.add('main-content');
+mainBodyContent.textContent = 'Main content';
+
+mainBody.appendChild(mainBodyHeader);
+mainBody.appendChild(mainBodyContent);
+
 content.appendChild(mainBody);
 
 //header footer and sidemenu DOM

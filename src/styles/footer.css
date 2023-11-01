@@ -9,7 +9,7 @@
     grid-template-columns: 1fr 8fr;
     grid-template-rows: 1fr 1fr;
     justify-items: center;
-    border: 1px solid;
+    /* border: 1px solid; */
 }
 
 .footer .add-task-btn{
