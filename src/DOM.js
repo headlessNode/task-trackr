@@ -160,6 +160,6 @@ export function taskInfoDialog(){
 export function getInfoFromDialog(){
     const dialog = document.querySelector('.task-dialog');
     dialog.showModal();
-    dialog.style.top = '50%';
+    dialog.style.top = '30%';
 
 }

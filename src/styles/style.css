@@ -1,6 +1,7 @@
 @import url(./footer.css);
 @import url(./sidemenu.css);
 @import url(./header.css);
+@import url(./dialog.css);
 
 :root{
     --main-color: #F7F4F3;
@@ -10,6 +11,7 @@
     --dark-accent: #090A0B;
     --footer-hover: #F96339;
     --sidebar-color: #EFE8E6;
+    --dialog-background: #F7F4F3;
     --main-border: #ccc;
     --main-body-height: 40rem;
 }
@@ -57,16 +59,6 @@
     padding: 0 1rem 0 1rem;
     display: grid;
     grid-template-rows: repeat(auto-fit,minmax(100px, 1fr));
-}
-
-.task-dialog{
-    top: 120%;
-    margin: 0 auto 0 auto;
-    width: 250px;
-    transition: top 0.5s ease;
-    display: grid;
-    justify-items: center;
-    align-items: center;
 }
 
 @media screen and (max-width: 370px) {

@@ -1,0 +1,45 @@
+.task-dialog{
+    top: 120%;
+    margin: 0 auto 0 auto;
+    width: 350px;
+    transition: top 0.5s ease;
+    display: grid;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem;
+    background: var(--dialog-background);
+}
+
+.task-dialog .dialog-form{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.task-dialog input[type="text"], .task-dialog input[type="date"], .task-dialog fieldset {
+    width: 80%;
+}
+
+.task-dialog input[type="text"], .task-dialog input[type="date"]{
+
+}
+
+.task-dialog fieldset{
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+}
+
+.task-dialog fieldset div{
+    margin-left: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.task-dialog button{
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    width: 40%;
+}
