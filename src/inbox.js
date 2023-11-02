@@ -1,3 +1,5 @@
+
+
 class Task {
     constructor(title, description, dueDate, priority){
         this.title = title;
@@ -7,8 +9,8 @@ class Task {
     }
 };
 
-export function createTaskObject(title,description,dueDate,priority){
-    let task = new Task(title, description,dueDate,priority);
+export function createTaskObject(formData){
+    let task = new Task(formData.title, formData.description,formData.dueDate,formData.priority);
 
-    
+    console.log(task);
 }

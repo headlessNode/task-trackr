@@ -1,6 +1,6 @@
 import './styles/style.css'
 import { appendToPage,createPageHeader,createMainBody,createSideMenu, createFooter, taskInfoDialog } from './DOM'
-import { hideandShowSideMenu,listenToScreenChanges,addTask } from './eventHandling';
+import { hideandShowSideMenu,listenToScreenChanges,showTaskDialog, dialogSubmitEvent } from './eventHandling';
 
 const pageHeader = createPageHeader();
 const mainBody = createMainBody();
@@ -24,6 +24,10 @@ const events = (()=>{
 
     //event listener for add task event
     const addTaskBtn = document.querySelector('.add-task-btn');
-    addTaskBtn.addEventListener('click', addTask);
+    addTaskBtn.addEventListener('click', showTaskDialog);
+
+    //dialog submit btn event
+    const dialogForm = document.querySelector('.dialog-form');
+    dialogForm.addEventListener('submit', dialogSubmitEvent);
 
 })();

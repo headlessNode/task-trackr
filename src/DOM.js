@@ -101,6 +101,7 @@ export function taskInfoDialog(){
     dialogForm.classList.add('dialog-form');
     //TITLE
     const title = document.createElement('input');
+    title.setAttribute('name', 'title');
     title.setAttribute('type', 'text');
     title.setAttribute('placeholder', 'Title');
     title.setAttribute('required', 'true');
@@ -108,12 +109,14 @@ export function taskInfoDialog(){
     //DESCRIPTION
     const description = document.createElement('input');
     description.setAttribute('type', 'text');
+    description.setAttribute('name', 'description');
     description.setAttribute('placeholder', 'Description');
     description.setAttribute('required', 'true');
 
     //DUE DATE
     const dueDate = document.createElement('input');
     dueDate.setAttribute('type', 'date');
+    dueDate.setAttribute('name', 'dueDate');
     dueDate.setAttribute('required', 'true');
 
     //PRIORITY
@@ -157,9 +160,11 @@ export function taskInfoDialog(){
     return dialog;
 }
 
-export function getInfoFromDialog(){
+export function showTaskFromDialog(){
     const dialog = document.querySelector('.task-dialog');
+    //show the dialog
     dialog.showModal();
     dialog.style.top = '30%';
+    dialog.style.opacity = '1';
 
 }

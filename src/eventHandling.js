@@ -1,4 +1,5 @@
-import { getInfoFromDialog } from "./DOM";
+import { showTaskFromDialog } from "./DOM";
+import { createTaskObject } from "./inbox";
 
 //Logic for hiding and showing menu on btn click
 export function hideandShowSideMenu(){
@@ -99,10 +100,28 @@ export const listenToScreenChanges = ()=>{
     }
 };
 
-export function addTask(){
+export function dialogSubmitEvent(event){
+    const dialog = document.querySelector('.task-dialog');
+    event.preventDefault();
+    //get data from the form
+    const formData = new FormData(event.target);
+    const formDataObject = {};
+    for(const[key, value] of formData.entries()){
+        formDataObject[key] = value;
+    }
+    //hide the dialog
+    dialog.close();
+    dialog.style.top = '120%';
+    dialog.style.opacity = '0';
+
+    createTaskObject(formDataObject);
+
+}
+
+export function showTaskDialog(){
     console.log('addTaskBtn clicked');
     //call the function in DOM.js which displays dialog for adding task information and return that information.
-    getInfoFromDialog();
+    showTaskFromDialog();
     //call the function in inbox.js which creates a task based on the information received from the DOM.js
 
 }

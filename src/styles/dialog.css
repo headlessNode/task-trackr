@@ -2,12 +2,13 @@
     top: 120%;
     margin: 0 auto 0 auto;
     width: 350px;
-    transition: top 0.5s ease;
     display: grid;
+    opacity: 0;
     border: none;
     border-radius: 10px;
     padding: 1rem;
     background: var(--dialog-background);
+    transition: opacity 1.5s ease, top 0.3s ease;
 }
 
 .task-dialog .dialog-form{
@@ -38,8 +39,14 @@
 }
 
 .task-dialog button{
-    border: none;
-    border-radius: 10px;
+    border: 1px solid var(--dark-accent);
     padding: 10px;
     width: 40%;
+    background: none;
+}
+
+.task-dialog button:hover{
+    background: var(--orange-accent);
+    color: var(--dialog-background);
+    border: 1px solid var(--dialog-background);
 }
