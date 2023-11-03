@@ -109,10 +109,11 @@ export function dialogSubmitEvent(event){
     for(const[key, value] of formData.entries()){
         formDataObject[key] = value;
     }
-    //hide the dialog
+    //hide/remove the dialog
     dialog.close();
-    dialog.style.top = '120%';
+    dialog.style.top = '50%';
     dialog.style.opacity = '0';
+    dialog.style.display = 'none';
 
     createTaskObject(formDataObject);
 

@@ -1,14 +1,14 @@
 .task-dialog{
-    top: 120%;
+    top: 50%;
     margin: 0 auto 0 auto;
     width: 350px;
-    display: grid;
+    display: none;
     opacity: 0;
     border: none;
     border-radius: 10px;
     padding: 1rem;
     background: var(--dialog-background);
-    transition: opacity 1.5s ease, top 0.3s ease;
+    transition: opacity 1s ease, top 0.3s ease;
 }
 
 .task-dialog .dialog-form{

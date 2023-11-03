@@ -162,6 +162,7 @@ export function taskInfoDialog(){
 export function showTaskFromDialog(){
     const dialog = document.querySelector('.task-dialog');
     //show the dialog
+    dialog.style.display = 'grid';
     dialog.showModal();
     dialog.style.top = '30%';
     dialog.style.opacity = '1';
