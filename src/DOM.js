@@ -28,7 +28,6 @@ export function createMainBody(){
 
     const mainBodyContent = document.createElement('div');
     mainBodyContent.classList.add('main-body-content');
-    mainBodyContent.textContent = 'Main content';
 
     mainBody.appendChild(mainBodyHeader);
     mainBody.appendChild(mainBodyContent);    
@@ -166,5 +165,40 @@ export function showTaskFromDialog(){
     dialog.showModal();
     dialog.style.top = '30%';
     dialog.style.opacity = '1';
+
+}
+
+export function appendTask(task){
+    const mainBodyContent = document.querySelector('.main-body-content');
+    
+    const taskContainer = document.createElement('div');
+    taskContainer.classList.add('task-container');
+
+    //checkbox
+    const checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('id', 'task-checkbox');
+    taskContainer.appendChild(checkbox);
+    //task title
+    const taskTitle = document.createElement('p');
+    taskTitle.classList.add('task-title');
+    taskTitle.textContent = task.title;
+    taskContainer.appendChild(taskTitle);
+    //task priority
+    const taskPriority = document.createElement('p');
+    taskPriority.classList.add('task-priority');
+    taskPriority.textContent = task.priority;
+    taskContainer.appendChild(taskPriority);
+    //task duedate
+    const taskDueDate = document.createElement('p');
+    taskDueDate.classList.add('task-duedate');
+    taskDueDate.textContent = task.dueDate;
+    taskContainer.appendChild(taskDueDate);
+
+
+    //task description will go in the details dialog box, shown when a button is clicked
+
+
+    mainBodyContent.appendChild(taskContainer);
 
 }
