@@ -120,7 +120,6 @@ export function dialogSubmitEvent(event){
 }
 
 export function dialogEscEvent(event){
-    event.preventDefault();
     const dialog = document.querySelector('.task-dialog');
     if(dialog.style.display === 'grid'){
         if(event.key === "Escape"){
