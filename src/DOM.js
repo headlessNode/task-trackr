@@ -159,7 +159,7 @@ export function taskInfoDialog(){
     return dialog;
 }
 
-export function showTaskFromDialog(){
+export function showTaskFormDialog(){
     const dialog = document.querySelector('.task-dialog');
     //show the dialog
     dialog.style.display = 'grid';

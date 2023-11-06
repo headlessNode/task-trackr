@@ -1,6 +1,6 @@
 import './styles/style.css'
 import { appendToPage,createPageHeader,createMainBody,createSideMenu, createFooter, taskInfoDialog } from './DOM'
-import { hideandShowSideMenu,listenToScreenChanges,showTaskDialog, dialogSubmitEvent } from './eventHandling';
+import { hideandShowSideMenu,listenToScreenChanges,showTaskDialog, dialogSubmitEvent, dialogEscEvent } from './eventHandling';
 
 const pageHeader = createPageHeader();
 const mainBody = createMainBody();
@@ -29,5 +29,7 @@ const events = (()=>{
     //dialog submit btn event
     const dialogForm = document.querySelector('.dialog-form');
     dialogForm.addEventListener('submit', dialogSubmitEvent);
+    //dialog esc btn event
+    document.addEventListener('keydown', dialogEscEvent);
 
 })();

@@ -1,4 +1,4 @@
-import { showTaskFromDialog } from "./DOM";
+import { showTaskFormDialog } from "./DOM";
 import { createTaskObject } from "./inbox";
 
 //Logic for hiding and showing menu on btn click
@@ -119,10 +119,23 @@ export function dialogSubmitEvent(event){
 
 }
 
+export function dialogEscEvent(event){
+    event.preventDefault();
+    const dialog = document.querySelector('.task-dialog');
+    if(dialog.style.display === 'grid'){
+        if(event.key === "Escape"){
+            dialog.close();
+            dialog.style.top = '50%';
+            dialog.style.opacity = '0';
+            dialog.style.display = 'none';  
+        }
+    }
+}
+
 export function showTaskDialog(){
     console.log('addTaskBtn clicked');
     //call the function in DOM.js which displays dialog for adding task information and return that information.
-    showTaskFromDialog();
+    showTaskFormDialog();
     //call the function in inbox.js which creates a task based on the information received from the DOM.js
 
 }
