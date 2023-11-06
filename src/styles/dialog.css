@@ -46,7 +46,7 @@
 }
 
 .task-dialog button:hover{
-    background: var(--orange-accent);
+    background: rgb(var(--orange-accent));
     color: var(--dialog-background);
     border: 1px solid var(--dialog-background);
 }

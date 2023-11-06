@@ -3,8 +3,10 @@
     grid-column: 1/3;
     grid-row: 3/4;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, var(--main-color) 0%, var(--main-color) 50%, var(--orange-accent) 50%, var(--orange-accent) 100%);
+    bottom: 0;
+    position: sticky;
+    /* background: linear-gradient(to bottom, rgba(247, 244, 243, 0) 0%, rgba(247, 244, 243, 0) 50%, rgba(248, 67, 18, 1) 50%, rgba(248, 67, 18, 1) 100%); */
+    background: linear-gradient(to bottom, rgba(var(--main-color), 0) 0%, rgba(var(--main-color), 0) 50%, rgba(var(--orange-accent), 1) 50%, rgba(var(--orange-accent), 1) 100%);
     display: grid;
     grid-template-columns: 1fr 8fr;
     grid-template-rows: 1fr 1fr;
@@ -13,7 +15,7 @@
 }
 
 .footer .add-task-btn{
-    background: var(--orange-accent);
+    background: rgb(var(--orange-accent));
     cursor: pointer;
     grid-row: 1/3;
     grid-column: 1/3;
@@ -21,7 +23,7 @@
     height: 5.5rem;
     border-radius: 50%;
     align-self: center;
-    border: 8px solid var(--main-color);
+    border: 8px solid rgb(var(--main-color));
     transition: background 0.3s ease-in;
 }
 

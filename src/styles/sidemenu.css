@@ -2,17 +2,16 @@
     display: none;
     width: 0;
     transition: all 0.3s ease;
-    padding-top: 3rem;
+    padding-top: 50px;
     border-right: 1px solid var(--main-border);
     border-top: 1px solid var(--main-border);
     border-top-right-radius: 10px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     background: var(--sidebar-color);
     color: var(--dark-accent);
-    grid-template-rows: 0.5fr repeat(3,0.5fr) 5fr;
+    grid-template-rows: repeat(4,50px) 5fr;
     justify-items: center;
-    align-items: center;
-    gap: 1rem;
+    gap: 20px;
 }
 
 .inbox{
@@ -45,16 +44,16 @@
     align-items: center;
     justify-items: start;
     gap: 1rem;
-    padding-left: 1rem;
+    padding-left: 20px;
     width: 90%;
-    height: 70%;
+    height: 50px;
     background: none;
     border-radius: 10px;
     border: none;
 }
 
 .sidebar button:hover{
-    background: var(--main-color);
+    background: rgb(var(--main-color));
 }
 
 .projects{
@@ -62,11 +61,10 @@
     transition: all 1s ease;
     grid-row: 5/6;
     width: 90%;
-    height: 90%;
     display: grid;
     align-items: center;
     justify-items: center;
-    grid-template-rows: repeat(auto-fit, 2rem);
+    grid-template-rows: repeat(auto-fit, 50px);
     gap: 1rem;
 }
 .projects-header{
