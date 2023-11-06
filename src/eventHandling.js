@@ -100,22 +100,43 @@ export const listenToScreenChanges = ()=>{
     }
 };
 
+
+
 export function dialogSubmitEvent(event){
-    const dialog = document.querySelector('.task-dialog');
     event.preventDefault();
+    const dialog = document.querySelector('.task-dialog');
     //get data from the form
     const formData = new FormData(event.target);
     const formDataObject = {};
     for(const[key, value] of formData.entries()){
         formDataObject[key] = value;
     }
-    //hide/remove the dialog
-    dialog.close();
-    dialog.style.top = '50%';
-    dialog.style.opacity = '0';
-    dialog.style.display = 'none';
 
-    createTaskObject(formDataObject);
+    const currentDate = new Date();
+    const taskDate = new Date(formDataObject.dueDate);
+
+    currentDate.setHours(0,0,0,0);
+    taskDate.setHours(0,0,0,0);
+
+    console.log(currentDate);
+    console.log(taskDate);
+
+    if(taskDate < currentDate){
+        const dateInput = document.querySelector('input[type="date"]');
+        dateInput.style.border = '1px solid red';
+        
+    }
+    else{
+        const dateInput = document.querySelector('input[type="date"]');
+        dateInput.style.borderBottom = '1px solid black';
+        //hide/remove the dialog
+        dialog.close();
+        dialog.style.top = '50%';
+        dialog.style.opacity = '0';
+        dialog.style.display = 'none';
+
+        createTaskObject(formDataObject);   
+    }
 
 }
 
