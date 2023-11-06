@@ -12,10 +12,5 @@ class Task {
 export function createTaskObject(formData){
     let task = new Task(formData.title, formData.description,formData.dueDate,formData.priority);
 
-    appendTaskToMainBody(task);
-}
-
-function appendTaskToMainBody(task){
-    console.log(task);
     appendTask(task);
 }

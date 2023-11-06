@@ -193,7 +193,12 @@ export function appendTask(task){
     //task duedate
     const taskDueDate = document.createElement('p');
     taskDueDate.classList.add('task-duedate');
-    taskDueDate.textContent = task.dueDate;
+    const parts = task.dueDate.split('-');
+    const year = parts[0];
+    const month = parts[1];
+    const day = parts[2];
+    const date = `${day}-${month}-${year}`;
+    taskDueDate.textContent = date;
     taskContainer.appendChild(taskDueDate);
 
 
