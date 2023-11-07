@@ -174,7 +174,13 @@ export function appendTask(task){
     
     const taskContainer = document.createElement('div');
     taskContainer.classList.add('task-container');
-
+    taskContainer.classList.add('tooltip');
+    const taskDescription = document.createElement('span');
+    taskDescription.classList.add('tooltip-text');
+    taskDescription.classList.add('task-description');
+    taskDescription.textContent = task.description;
+    taskContainer.appendChild(taskDescription);
+    
     //checkbox
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
@@ -183,13 +189,8 @@ export function appendTask(task){
     //task details
     const taskDetails = document.createElement('div');
     taskDetails.classList.add('task-details');
-    taskDetails.classList.add('tooltip');
+
     taskDetails.textContent = task.title;
-    const taskDescription = document.createElement('span');
-    taskDescription.classList.add('tooltip-text');
-    taskDescription.classList.add('task-description');
-    taskDescription.textContent = task.description;
-    taskDetails.appendChild(taskDescription);
     taskContainer.appendChild(taskDetails);
     //task priority
     const taskPriority = document.createElement('p');

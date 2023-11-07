@@ -64,6 +64,7 @@
 }
 
 .task-container{
+    position: relative;
     display: grid;
     grid-template-columns: 20px 3fr 1fr 1fr;
     height: 100px;
@@ -71,7 +72,6 @@
 }
 
 .task-details{
-    position: relative;
     height: 100%;
     width: 100%;
     display: flex;
@@ -81,7 +81,7 @@
 
 .tooltip .tooltip-text {
     visibility: hidden;
-    width: 120px;
+    width: 180px;
     background-color: rgb(var(--orange-accent));
     color: #fff;
     text-align: center;
@@ -89,8 +89,7 @@
     padding: 5px 0;
     position: absolute;
     top: 70%;
-    left: 50%;
-    margin-left: -60px;
+    left: 23.5%;
     z-index: 1;
 }
 
