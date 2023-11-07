@@ -2,6 +2,7 @@
 @import url(./sidemenu.css);
 @import url(./header.css);
 @import url(./dialog.css);
+@import url(./checkbox.css);
 
 :root{
     --main-color: 247, 244, 243;
