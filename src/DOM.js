@@ -195,7 +195,15 @@ export function appendTask(task){
     //task priority
     const taskPriority = document.createElement('p');
     taskPriority.classList.add('task-priority');
-    taskPriority.textContent = task.priority;
+    if(task.priority === 'high'){
+        taskPriority.innerHTML = '<i class="fa-solid fa-circle-exclamation fa-lg" style="color: #ad0000;"></i>';
+    }
+    else if(task.priority === 'medium'){
+        taskPriority.innerHTML = '<i class="fa-solid fa-circle-exclamation fa-lg" style="color: #00b400;"></i>';
+    }
+    else if(task.priority === 'low'){
+        taskPriority.innerHTML = '<i class="fa-solid fa-circle-exclamation fa-lg" style="color: #97ce97;"></i>';
+    }
     taskContainer.appendChild(taskPriority);
     //task duedate
     const taskDueDate = document.createElement('p');
