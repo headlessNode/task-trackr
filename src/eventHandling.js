@@ -128,6 +128,7 @@ export function dialogSubmitEvent(event){
     }
     else{
         const dateInput = document.querySelector('input[type="date"]');
+        dateInput.style.border = 'none';
         dateInput.style.borderBottom = '1px solid black';
         //hide/remove the dialog
         dialog.close();
