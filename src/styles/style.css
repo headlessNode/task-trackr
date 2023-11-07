@@ -66,9 +66,21 @@
 .task-container{
     position: relative;
     display: grid;
-    grid-template-columns: 20px 3fr 1fr 1fr;
+    grid-template-columns: 20px 3fr 90px 30px;
     height: 100px;
     align-items: center;
+}
+
+.task-duedate{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-priority{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .task-details{

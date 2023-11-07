@@ -192,6 +192,16 @@ export function appendTask(task){
 
     taskDetails.textContent = task.title;
     taskContainer.appendChild(taskDetails);
+    //task duedate
+    const taskDueDate = document.createElement('p');
+    taskDueDate.classList.add('task-duedate');
+    const parts = task.dueDate.split('-');
+    const year = parts[0];
+    const month = parts[1];
+    const day = parts[2];
+    const date = `${day}-${month}-${year}`;
+    taskDueDate.textContent = date;
+    taskContainer.appendChild(taskDueDate);    
     //task priority
     const taskPriority = document.createElement('p');
     taskPriority.classList.add('task-priority');
@@ -205,20 +215,6 @@ export function appendTask(task){
         taskPriority.innerHTML = '<i class="fa-solid fa-circle-exclamation fa-lg" style="color: #97ce97;"></i>';
     }
     taskContainer.appendChild(taskPriority);
-    //task duedate
-    const taskDueDate = document.createElement('p');
-    taskDueDate.classList.add('task-duedate');
-    const parts = task.dueDate.split('-');
-    const year = parts[0];
-    const month = parts[1];
-    const day = parts[2];
-    const date = `${day}-${month}-${year}`;
-    taskDueDate.textContent = date;
-    taskContainer.appendChild(taskDueDate);
-
-
-    //task description will go in the details dialog box, shown when a button is clicked
-
 
     mainBodyContent.appendChild(taskContainer);
 
