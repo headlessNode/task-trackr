@@ -70,6 +70,45 @@
     align-items: center;
 }
 
+.task-details{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(var(--orange-accent));
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    margin-left: -60px;
+    z-index: 1;
+}
+
+.tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent rgb(var(--orange-accent)) transparent;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+}
+
 @media screen and (max-width: 370px) {
     .main-body-content{
         grid-column: 1/4;
