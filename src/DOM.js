@@ -104,6 +104,7 @@ export function taskInfoDialog(){
     title.setAttribute('type', 'text');
     title.setAttribute('placeholder', 'Title');
     title.setAttribute('required', 'true');
+    title.setAttribute('maxlength', '16');
 
     //DESCRIPTION
     const description = document.createElement('input');
@@ -111,6 +112,7 @@ export function taskInfoDialog(){
     description.setAttribute('name', 'description');
     description.setAttribute('placeholder', 'Description');
     description.setAttribute('required', 'true');
+    description.setAttribute('maxlength', '20');
 
     //DUE DATE
     const dueDate = document.createElement('input');
