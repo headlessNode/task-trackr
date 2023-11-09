@@ -1,4 +1,4 @@
-import { showTaskFormDialog } from "./DOM";
+import { showTaskFormDialog, changeCurrentPage } from "./DOM";
 import { createTaskObject } from "./inbox";
 
 //Logic for hiding and showing menu on btn click
@@ -158,5 +158,50 @@ export function showTaskDialog(){
     //call the function in DOM.js which displays dialog for adding task information and return that information.
     showTaskFormDialog();
     //call the function in inbox.js which creates a task based on the information received from the DOM.js
+}
+
+export function pageChangeEvent(e){
+
+    const inboxBtn = document.querySelector('.inbox');
+    const todayBtn = document.querySelector('.today');
+    const upcomingBtn = document.querySelector('.upcoming');
+    let inboxClicked;
+    let todayClicked;
+    let upcomingClicked;
+
+    if(e.target.textContent === 'Inbox'){
+        inboxBtn.classList.add('clicked');
+        todayBtn.classList.remove('clicked');
+        upcomingBtn.classList.remove('clicked');
+        inboxClicked = true;
+        todayClicked = false;
+        upcomingClicked = false;
+    }
+    else if (e.target.textContent === 'Today'){
+        
+        // todayBtn.style.background = 'rgb(247, 244, 243)';
+        // inboxBtn.style.background = 'none';
+        // upcomingBtn.style.background = 'none';
+        todayBtn.classList.add('clicked');
+        inboxBtn.classList.remove('clicked');
+        upcomingBtn.classList.remove('clicked');
+        inboxClicked = false;
+        todayClicked = true;
+        upcomingClicked = false;
+    }
+    else if(e.target.textContent === 'Upcoming'){
+        
+        // upcomingBtn.style.background = 'rgb(247, 244, 243)';
+        // todayBtn.style.background = 'none';
+        // inboxBtn.style.background = 'none';
+        upcomingBtn.classList.add('clicked');
+        todayBtn.classList.remove('clicked');
+        inboxBtn.classList.remove('clicked');
+        inboxClicked = false;
+        todayClicked = false;
+        upcomingClicked = true;
+    }
+
+    changeCurrentPage(inboxClicked, todayClicked, upcomingClicked);
 
 }

@@ -52,6 +52,10 @@
     border: none;
 }
 
+.sidebar button.clicked{
+    background: rgb(var(--main-color));
+}
+
 .sidebar button:hover{
     background: rgb(var(--main-color));
 }

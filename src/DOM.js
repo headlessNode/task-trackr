@@ -24,13 +24,13 @@ export function createMainBody(){
     const mainBody = document.createElement('div');
     mainBody.classList.add('main-body');
     const mainBodyHeader = document.createElement('h2');
-    mainBodyHeader.textContent = 'Header';
+    mainBodyHeader.textContent = 'Inbox';
 
     const mainBodyContent = document.createElement('div');
     mainBodyContent.classList.add('main-body-content');
-
+    
     mainBody.appendChild(mainBodyHeader);
-    mainBody.appendChild(mainBodyContent);    
+    mainBody.appendChild(mainBodyContent);
 
     return mainBody;
 }
@@ -45,6 +45,7 @@ export function createSideMenu(){
     sideMenu.appendChild(title);
     const inbox = document.createElement('button');
     inbox.classList.add('inbox');
+    inbox.classList.add('clicked');
     inbox.innerHTML = '<i class="fa-solid fa-inbox fa-lg" style="color: #5089ED;"></i><p>Inbox</p>';
     sideMenu.appendChild(inbox);
     const today = document.createElement('button');
@@ -220,4 +221,51 @@ export function appendTask(task){
 
     mainBodyContent.appendChild(taskContainer);
 
+}
+
+export function changeCurrentPage(inboxClicked, todayClicked, upcomingClicked){
+
+    const mainBody = document.querySelector('.main-body');
+    
+    if(mainBody.childElementCount > 0){
+        for(let i = 0; i <= mainBody.childElementCount; i++){
+            mainBody.removeChild(mainBody.firstChild);
+        }
+    }
+
+    if(inboxClicked){
+        const mainBodyHeader = document.createElement('h2');
+        mainBodyHeader.textContent = 'Inbox';
+    
+        const mainBodyContent = document.createElement('div');
+        mainBodyContent.classList.add('main-body-content');
+        
+        mainBody.appendChild(mainBodyHeader);
+        mainBody.appendChild(mainBodyContent);    
+
+    }
+    else if(todayClicked){
+        const mainBodyHeader = document.createElement('h2');
+        mainBodyHeader.textContent = 'Today';
+    
+        const mainBodyContent = document.createElement('div');
+        mainBodyContent.classList.add('main-body-content');
+        
+        mainBody.appendChild(mainBodyHeader);
+        mainBody.appendChild(mainBodyContent);    
+
+    }
+    else if(upcomingClicked){
+        const mainBodyHeader = document.createElement('h2');
+        mainBodyHeader.textContent = 'Upcoming';
+    
+        const mainBodyContent = document.createElement('div');
+        mainBodyContent.classList.add('main-body-content');
+        
+        mainBody.appendChild(mainBodyHeader);
+        mainBody.appendChild(mainBodyContent);    
+
+    }
+
+ 
 }

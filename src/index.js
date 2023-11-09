@@ -1,6 +1,6 @@
 import './styles/style.css'
 import { appendToPage,createPageHeader,createMainBody,createSideMenu, createFooter, taskInfoDialog } from './DOM'
-import { hideandShowSideMenu,listenToScreenChanges,showTaskDialog, dialogSubmitEvent, dialogEscEvent } from './eventHandling';
+import { hideandShowSideMenu,listenToScreenChanges,showTaskDialog, dialogSubmitEvent, dialogEscEvent, pageChangeEvent } from './eventHandling';
 
 const pageHeader = createPageHeader();
 const mainBody = createMainBody();
@@ -31,5 +31,15 @@ const events = (()=>{
     dialogForm.addEventListener('submit', dialogSubmitEvent);
     //dialog esc btn event
     document.addEventListener('keydown', dialogEscEvent);
+
+    //Inbox btn event
+    const inboxBtn = document.querySelector('.inbox');
+    inboxBtn.addEventListener('click', pageChangeEvent);
+    //Today btn event
+    const todayBtn = document.querySelector('.today');
+    todayBtn.addEventListener('click', pageChangeEvent);
+    //Inbox btn event
+    const upcomingBtn = document.querySelector('.upcoming');
+    upcomingBtn.addEventListener('click', pageChangeEvent);        
 
 })();
