@@ -1,6 +1,6 @@
 import './styles/style.css'
 import { appendToPage,createPageHeader,createMainBody,createSideMenu, createFooter, taskInfoDialog } from './DOM'
-import { hideandShowSideMenu,listenToScreenChanges,showTaskDialog, dialogSubmitEvent, dialogEscEvent, pageChangeEvent } from './eventHandling';
+import { hideandShowSideMenu,listenToScreenChanges,showTaskDialog, dialogSubmitEvent, dialogEscEvent, pageChangeEvent, checkLocalStorage } from './eventHandling';
 
 const pageHeader = createPageHeader();
 const mainBody = createMainBody();
@@ -16,6 +16,11 @@ appendToPage(dialog);
 
 //EVENTS
 const events = (()=>{
+
+    //page load event
+    document.addEventListener('DOMContentLoaded', checkLocalStorage)
+
+
     //menu btn event
     const menuBtn = document.querySelector('.menu-btn');
     menuBtn.addEventListener('click', hideandShowSideMenu);

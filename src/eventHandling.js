@@ -178,10 +178,6 @@ export function pageChangeEvent(e){
         upcomingClicked = false;
     }
     else if (e.target.textContent === 'Today'){
-        
-        // todayBtn.style.background = 'rgb(247, 244, 243)';
-        // inboxBtn.style.background = 'none';
-        // upcomingBtn.style.background = 'none';
         todayBtn.classList.add('clicked');
         inboxBtn.classList.remove('clicked');
         upcomingBtn.classList.remove('clicked');
@@ -190,10 +186,6 @@ export function pageChangeEvent(e){
         upcomingClicked = false;
     }
     else if(e.target.textContent === 'Upcoming'){
-        
-        // upcomingBtn.style.background = 'rgb(247, 244, 243)';
-        // todayBtn.style.background = 'none';
-        // inboxBtn.style.background = 'none';
         upcomingBtn.classList.add('clicked');
         todayBtn.classList.remove('clicked');
         inboxBtn.classList.remove('clicked');
@@ -204,4 +196,15 @@ export function pageChangeEvent(e){
 
     changeCurrentPage(inboxClicked, todayClicked, upcomingClicked);
 
+}
+
+export function checkLocalStorage(){
+
+    //check localStorage for tasks, if there are some present, append them to appropriate page
+    let keys = Object.keys(localStorage);
+    keys.forEach((value, index, obj)=>{
+        if(value.includes('Task')){
+            console.log(value);
+        }
+    });
 }
