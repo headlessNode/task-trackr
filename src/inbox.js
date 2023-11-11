@@ -11,23 +11,36 @@ class Task {
 
 let taskList = (()=>{
 
-    return [];
+    let tasks = [];
+
+    if(localStorage.length>0){
+        let keys = Object.keys(localStorage);
+        keys.forEach((value, index, obj)=>{
+            if(value.includes('Task')){
+                tasks.push(JSON.parse(localStorage.getItem(value)));
+            }
+        })
+        return {tasks};
+    }
+    else{
+        return {tasks};
+    }
 
 })();
 
 export function createTaskObject(formData){
     let task = new Task(formData.title, formData.description,formData.dueDate,formData.priority);
-    taskList.push(task)
+    taskList.tasks.push(task)
     addTaskToLocalStorage();
 
     appendTask(task);
 }
 
 function addTaskToLocalStorage(){
-    taskList.forEach((value, index, obj )=>{
+    taskList.tasks.forEach((value, index, obj )=>{
         if(localStorage.getItem(index) === null){
             let taskString = JSON.stringify(value);
-            localStorage.setItem(`Task${index}`, taskString);
+            localStorage.setItem(index, taskString);
         }
     });
 }

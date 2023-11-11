@@ -200,11 +200,18 @@ export function pageChangeEvent(e){
 
 export function checkLocalStorage(){
 
-    //check localStorage for tasks, if there are some present, append them to appropriate page
-    let keys = Object.keys(localStorage);
-    keys.forEach((value, index, obj)=>{
-        if(value.includes('Task')){
-            console.log(value);
-        }
-    });
+    //check localStorage for tasks, if there are some present, filter the keys ,append them to appropriate page
+    if(localStorage.length > 0){
+        let keys = Object.keys(localStorage);
+        let sortedKeys = [];
+        keys.forEach((value, index, obj)=>{
+            sortedKeys.push(Number(value));
+        });
+        sortedKeys.sort((a,b)=>{
+            return a - b;
+        });
+        sortedKeys.forEach((value, index, obj)=>{
+            console.log(JSON.parse(localStorage.getItem(value)));
+        })
+    }
 }
