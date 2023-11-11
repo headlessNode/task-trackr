@@ -1,3 +1,4 @@
+import { checkLocalStorage } from "./eventHandling";
 
 //append element to the webpage
 export function appendToPage(element){
@@ -241,7 +242,9 @@ export function changeCurrentPage(inboxClicked, todayClicked, upcomingClicked){
         mainBodyContent.classList.add('main-body-content');
         
         mainBody.appendChild(mainBodyHeader);
-        mainBody.appendChild(mainBodyContent);    
+        mainBody.appendChild(mainBodyContent);
+        
+        checkLocalStorage();
 
     }
     else if(todayClicked){

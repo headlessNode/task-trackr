@@ -1,4 +1,4 @@
-import { showTaskFormDialog, changeCurrentPage } from "./DOM";
+import { showTaskFormDialog, changeCurrentPage, appendTask } from "./DOM";
 import { createTaskObject } from "./inbox";
 
 //Logic for hiding and showing menu on btn click
@@ -211,7 +211,7 @@ export function checkLocalStorage(){
             return a - b;
         });
         sortedKeys.forEach((value, index, obj)=>{
-            console.log(JSON.parse(localStorage.getItem(value)));
+            appendTask(JSON.parse(localStorage.getItem(value)));
         })
     }
 }
