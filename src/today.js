@@ -6,7 +6,7 @@ export function createTodayPage(){
     //create the skeleton of the page
     const mainBody = document.querySelector('.main-body');
     const mainBodyHeader = document.createElement('h2');
-    mainBodyHeader.textContent = 'Inbox';
+    mainBodyHeader.textContent = 'Today';
 
     const mainBodyContent = document.createElement('div');
     mainBodyContent.classList.add('main-body-content');
