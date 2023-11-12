@@ -190,7 +190,6 @@ export function appendTask(task){
     //checkbox
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
-    checkbox.setAttribute('id', 'task-checkbox');
     taskContainer.appendChild(checkbox);
     //task details
     const taskDetails = document.createElement('div');
