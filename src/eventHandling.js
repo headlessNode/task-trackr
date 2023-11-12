@@ -1,4 +1,4 @@
-import { showTaskFormDialog, changeCurrentPage, appendTask } from "./DOM";
+import { showTaskFormDialog, changeCurrentPage, appendTask, createProject } from "./DOM";
 import { createTaskObject } from "./inbox";
 
 //Logic for hiding and showing menu on btn click
@@ -217,4 +217,18 @@ export function checkLocalStorage(){
     sortedKeys.forEach((value, index, obj)=>{
         appendTask(JSON.parse(localStorage.getItem(value)));
     })
+}
+
+export function showProjectPopupEvent(){
+    const addProjectsPopup = document.querySelector('.add-project-pop-up');
+    addProjectsPopup.classList.toggle('hidden');
+}
+
+export function createProjectEvent(){
+    const addProjectsPopup = document.querySelector('.add-project-pop-up');
+    const projectName = document.querySelector('.project-name')
+    if(projectName.value !== ''){
+        addProjectsPopup.classList.toggle('hidden');
+        createProject();
+    }
 }

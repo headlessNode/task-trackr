@@ -1,6 +1,6 @@
 import './styles/style.css'
-import { appendToPage,createPageHeader,createMainBody,createSideMenu, createFooter, taskInfoDialog } from './DOM'
-import { hideandShowSideMenu,listenToScreenChanges,showTaskDialog, dialogSubmitEvent, dialogEscEvent, pageChangeEvent, checkLocalStorage } from './eventHandling';
+import { appendToPage,createPageHeader,createMainBody,createSideMenu, createFooter, taskInfoDialog, createProjectPopUp } from './DOM'
+import { hideandShowSideMenu,listenToScreenChanges,showTaskDialog, dialogSubmitEvent, dialogEscEvent, pageChangeEvent, checkLocalStorage, addProjectEvent, createProjectEvent, cancelProjectEvent, showProjectPopupEvent } from './eventHandling';
 
 const pageHeader = createPageHeader();
 const mainBody = createMainBody();
@@ -46,5 +46,15 @@ const events = (()=>{
     //Inbox btn event
     const upcomingBtn = document.querySelector('.upcoming');
     upcomingBtn.addEventListener('click', pageChangeEvent);        
+
+    //add projects event
+    const addProjectsBtn = document.querySelector('.add-projects');
+    addProjectsBtn.addEventListener('click', showProjectPopupEvent);
+    //project name submit event
+    const addBtn = document.querySelector('.add-project-btn');
+    addBtn.addEventListener('click', createProjectEvent);
+    //project name cancel event
+    const cancelBtn = document.querySelector('.cancel-project-btn');
+    cancelBtn.addEventListener('click', cancelProjectEvent);
 
 })();

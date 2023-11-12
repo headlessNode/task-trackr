@@ -1,3 +1,4 @@
+import { addProjectEvent } from "./eventHandling.js";
 import {createInboxPage} from "./inbox.js";
 import {createTodayPage} from "./today.js";
 import {createUpcomingPage} from "./upcoming.js";
@@ -38,6 +39,37 @@ export function createMainBody(){
     return mainBody;
 }
 
+function createProjectPopUp(){
+    const popUp = document.createElement('div');
+    popUp.classList.add('add-project-pop-up');
+    popUp.classList.toggle('hidden');
+
+    const nameInput = document.createElement('input');
+    nameInput.setAttribute('type', 'text');
+    nameInput.setAttribute('name', 'project-name');
+    nameInput.classList.add('project-name');
+
+    const popUpBtns = document.createElement('div');
+    popUpBtns.classList.add('pop-up-btns');
+    const projectAddBtn = document.createElement('button');
+    const projectCancelBtn = document.createElement('button');
+    projectAddBtn.textContent = 'Add';
+    projectCancelBtn.textContent = 'Cancel';
+    projectAddBtn.setAttribute('type', 'button');
+    projectCancelBtn.setAttribute('type', 'button');
+    projectAddBtn.classList.add('add-project-btn');
+    projectCancelBtn.classList.add('cancel-project-btn');
+    popUpBtns.appendChild(projectAddBtn);
+    popUpBtns.appendChild(projectCancelBtn);
+
+
+    popUp.appendChild(nameInput);
+    popUp.appendChild(popUpBtns);
+
+    return popUp;
+
+}
+
 export function createSideMenu(){
     //sidemenu DOM
     const sideMenu = document.createElement('div');
@@ -71,8 +103,10 @@ export function createSideMenu(){
     addProjects.innerHTML = '<i class="fa-solid fa-plus fa-lg" style="color: #000000;"></i>'
     projectsHeader.appendChild(addProjects);
 
-    sideMenu.appendChild(projects);
+    projects.appendChild(createProjectPopUp());
 
+    sideMenu.appendChild(projects);
+    
 
     return sideMenu;
 }
@@ -259,4 +293,17 @@ export function appendTasksFromLocalStorage(sortedKeys){
             appendTask(value);
         }
     });
+}
+
+export function createProject(){
+    const projects = document.querySelector('.projects');
+    const projectPopup = document.querySelector('.add-project-pop-up');
+    const projectName = document.querySelector('.project-name');
+
+    const project = document.createElement('button');
+    project.classList.add(projectName.value);
+    project.textContent = projectName.value;
+
+    projects.insertBefore(project, projectPopup);
+
 }
