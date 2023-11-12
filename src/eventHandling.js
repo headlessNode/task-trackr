@@ -118,8 +118,6 @@ export function dialogSubmitEvent(event){
     currentDate.setHours(0,0,0,0);
     taskDate.setHours(0,0,0,0);
 
-    console.log(currentDate);
-    console.log(taskDate);
 
     if(taskDate < currentDate){
         const dateInput = document.querySelector('input[type="date"]');
@@ -198,9 +196,7 @@ export function pageChangeEvent(e){
 
 }
 
-export function checkLocalStorage(){
-
-    //check localStorage for tasks, if there are some present, filter the keys ,append them to appropriate page
+export function getKeysFromLocalStorage(){
     if(localStorage.length > 0){
         let keys = Object.keys(localStorage);
         let sortedKeys = [];
@@ -210,8 +206,15 @@ export function checkLocalStorage(){
         sortedKeys.sort((a,b)=>{
             return a - b;
         });
-        sortedKeys.forEach((value, index, obj)=>{
-            appendTask(JSON.parse(localStorage.getItem(value)));
-        })
+        return sortedKeys;
     }
+}
+
+export function checkLocalStorage(){
+
+    let sortedKeys = getKeysFromLocalStorage();
+
+    sortedKeys.forEach((value, index, obj)=>{
+        appendTask(JSON.parse(localStorage.getItem(value)));
+    })
 }

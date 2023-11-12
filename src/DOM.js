@@ -1,4 +1,6 @@
-import { checkLocalStorage } from "./eventHandling";
+import {createInboxPage} from "./inbox.js";
+import {createTodayPage} from "./today.js";
+import {createUpcomingPage} from "./upcoming.js";
 
 //append element to the webpage
 export function appendToPage(element){
@@ -235,40 +237,26 @@ export function changeCurrentPage(inboxClicked, todayClicked, upcomingClicked){
     }
 
     if(inboxClicked){
-        const mainBodyHeader = document.createElement('h2');
-        mainBodyHeader.textContent = 'Inbox';
-    
-        const mainBodyContent = document.createElement('div');
-        mainBodyContent.classList.add('main-body-content');
-        
-        mainBody.appendChild(mainBodyHeader);
-        mainBody.appendChild(mainBodyContent);
-        
-        checkLocalStorage();
-
+        createInboxPage();
     }
     else if(todayClicked){
-        const mainBodyHeader = document.createElement('h2');
-        mainBodyHeader.textContent = 'Today';
-    
-        const mainBodyContent = document.createElement('div');
-        mainBodyContent.classList.add('main-body-content');
-        
-        mainBody.appendChild(mainBodyHeader);
-        mainBody.appendChild(mainBodyContent);    
-
+        createTodayPage();
     }
-    else if(upcomingClicked){
-        const mainBodyHeader = document.createElement('h2');
-        mainBodyHeader.textContent = 'Upcoming';
-    
-        const mainBodyContent = document.createElement('div');
-        mainBodyContent.classList.add('main-body-content');
-        
-        mainBody.appendChild(mainBodyHeader);
-        mainBody.appendChild(mainBodyContent);    
-
+    else if(upcomingClicked){    
+        createUpcomingPage();
     }
 
  
+}
+
+export function appendTasksFromLocalStorage(sortedKeys){
+    sortedKeys.forEach((value, index, obj)=>{
+        console.log(typeof(value));
+        if(typeof value === 'number'){
+            appendTask(JSON.parse(localStorage.getItem(value)));
+        }
+        else if(typeof value === 'object' && value !== null){
+            appendTask(value);
+        }
+    });
 }

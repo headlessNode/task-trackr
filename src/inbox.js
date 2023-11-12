@@ -1,4 +1,5 @@
-import { appendTask } from "./DOM";
+import { appendTask, appendTasksFromLocalStorage } from "./DOM";
+import { getKeysFromLocalStorage } from "./eventHandling";
 
 class Task {
     constructor(title, description, dueDate, priority){
@@ -43,4 +44,19 @@ function addTaskToLocalStorage(){
             localStorage.setItem(index, taskString);
         }
     });
+}
+
+export function createInboxPage(){
+    const mainBody = document.querySelector('.main-body');
+    const mainBodyHeader = document.createElement('h2');
+    mainBodyHeader.textContent = 'Inbox';
+
+    const mainBodyContent = document.createElement('div');
+    mainBodyContent.classList.add('main-body-content');
+    
+    mainBody.appendChild(mainBodyHeader);
+    mainBody.appendChild(mainBodyContent);
+    
+    let sortedKeys = getKeysFromLocalStorage();
+    appendTasksFromLocalStorage(sortedKeys);
 }
