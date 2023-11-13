@@ -30,7 +30,7 @@
     min-height: 100vh;
     display: grid;
     grid-template-columns: minmax(200px, 0.8fr) 5fr;
-    grid-template-rows: 80px auto 120px;
+    grid-template-rows: auto auto 120px;
 }
 
 .main-body{

@@ -303,8 +303,13 @@ export function appendProjectToSideMenu(projectObject){
     const project = document.createElement('button');
     project.classList.add('project');
     project.classList.add('project-' + projectObject.title);
-    project.textContent = projectObject.title;
-
+    const text = document.createElement('p');
+    text.textContent = projectObject.title;
+    project.appendChild(text);
+    const icon = document.createElement('div');
+    icon.classList.add('project-icon');
+    icon.innerHTML = '<i class="fa-solid fa-circle" style="color: #5590f7;"></i>';
+    project.appendChild(icon);
     projects.insertBefore(project, projectPopup);
 
 }

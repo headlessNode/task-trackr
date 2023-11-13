@@ -19,11 +19,12 @@ export function createUpcomingPage(){
     const day = today.getDate();
     const CurrentDate = `${day}-${month}-${year}`;
 
-    let sortedKeys = getKeysFromLocalStorage();
+    let keys = getKeysFromLocalStorage();
+    let taskKeys = keys.taskKeys;
     let parsedObjects = [];
     let upcomingTasks = [];
 
-    sortedKeys.forEach((value,index,obj)=>{
+    taskKeys.forEach((value,index,obj)=>{
         parsedObjects.push(JSON.parse(localStorage.getItem(value)));
     });
     parsedObjects.forEach((value, index, obj)=>{

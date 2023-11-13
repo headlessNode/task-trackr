@@ -60,6 +60,7 @@ export function createInboxPage(){
     mainBody.appendChild(mainBodyHeader);
     mainBody.appendChild(mainBodyContent);
     
-    let sortedKeys = getKeysFromLocalStorage();
-    appendTasksFromLocalStorage(sortedKeys);
+    let keys = getKeysFromLocalStorage();
+    let taskKeys = keys.taskKeys;
+    appendTasksFromLocalStorage(taskKeys);
 }

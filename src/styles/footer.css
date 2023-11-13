@@ -23,7 +23,7 @@
     height: 5.5rem;
     border-radius: 50%;
     align-self: center;
-    border: 8px solid rgb(var(--main-color));
+    border: 8px solid rgba(var(--main-color), 1);
     transition: background 0.3s ease-in;
 }
 
