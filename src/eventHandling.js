@@ -168,9 +168,11 @@ export function pageChangeEvent(e){
     let inboxClicked;
     let todayClicked;
     let upcomingClicked;
-    let projectBtnClicked;
+    let projectBtnClicked = {
+        state: false,
+        element: e.currentTarget
+    };
 
-    console.log(e.currentTarget);
 
     if(e.currentTarget.textContent === 'Inbox'){
         inboxBtn.classList.add('clicked');
@@ -184,6 +186,7 @@ export function pageChangeEvent(e){
         inboxClicked = true;
         todayClicked = false;
         upcomingClicked = false;
+        projectBtnClicked.state = false;
     }
     else if (e.currentTarget.textContent === 'Today'){
         todayBtn.classList.add('clicked');
@@ -197,6 +200,7 @@ export function pageChangeEvent(e){
         inboxClicked = false;
         todayClicked = true;
         upcomingClicked = false;
+        projectBtnClicked.state = false;
     }
     else if(e.currentTarget.textContent === 'Upcoming'){
         upcomingBtn.classList.add('clicked');
@@ -209,6 +213,7 @@ export function pageChangeEvent(e){
         });
         inboxClicked = false;
         todayClicked = false;
+        projectBtnClicked.state = false;
         upcomingClicked = true;
     }
     
@@ -225,7 +230,8 @@ export function pageChangeEvent(e){
         inboxClicked = false;
         todayClicked = false;
         upcomingClicked = false;
-        projectBtnClicked = true;
+        projectBtnClicked.state = true;
+        projectBtnClicked.element = e.currentTarget;
     }
 
     changeCurrentPage(inboxClicked, todayClicked, upcomingClicked, projectBtnClicked);

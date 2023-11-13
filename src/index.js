@@ -58,9 +58,8 @@ const events = (()=>{
     //project name cancel event
     const cancelBtn = document.querySelector('.cancel-project-btn');
     cancelBtn.addEventListener('click', cancelProjectEvent);
-    
+    //project btn event
     const projectBtn = document.querySelectorAll('.projects button');
-    console.log(projectBtn);
     projectBtn.forEach((btn)=>{
         if(btn.classList.contains('project')){
             btn.addEventListener('click', pageChangeEvent);

@@ -281,8 +281,8 @@ export function changeCurrentPage(inboxClicked, todayClicked, upcomingClicked, p
     else if(upcomingClicked){    
         createUpcomingPage();
     }
-    else if(projectBtnClicked){
-        createProjectPage();
+    else if(projectBtnClicked.state){
+        createProjectPage(projectBtnClicked);
     }
  
 }

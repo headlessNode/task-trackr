@@ -1,4 +1,5 @@
 import { appendProjectToSideMenu } from "./DOM";
+import { getKeysFromLocalStorage } from "./eventHandling";
 
 class Project  {
     constructor(title){
@@ -44,6 +45,21 @@ export function addProjectToLocalStorage(){
 
 }
 
-export function createProjectPage(){
-    console.log('Project page');
+export function createProjectPage(projectBtnClicked){
+    console.log(projectBtnClicked.element);
+    let keys = getKeysFromLocalStorage();
+    let projectKeys = keys.projectKeys;
+    let project = projectBtnClicked.element;
+
+    const mainBody = document.querySelector('.main-body');
+    const mainBodyHeader = document.createElement('h2');
+    mainBodyHeader.textContent = project.textContent;
+
+    const mainBodyContent = document.createElement('div');
+    mainBodyContent.classList.add('main-body-content');
+    
+    mainBody.appendChild(mainBodyHeader);
+    mainBody.appendChild(mainBodyContent);
+
+
 }
