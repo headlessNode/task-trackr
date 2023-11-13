@@ -111,6 +111,7 @@
     font-size: large;
     border: none;
     border-radius: 5px;
+    text-indent: 3px;
 }
 
 .pop-up-btns{
@@ -132,8 +133,28 @@
     background: #97ce97;
 }
 
+.pop-up-btns .add-project-btn:hover{
+    background: #97e297;
+}
+
 .pop-up-btns .cancel-project-btn{
     background: #FF6666;
+}
+
+.pop-up-btns .cancel-project-btn:hover{
+    background: #FF7A7A;
+}
+
+.project{
+    cursor: pointer;
+    width: 90%;
+    height: 50px;
+    background: none;
+    border-radius: 10px;
+    border: none;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
 }
 
 @media screen and (max-width: 651px) {

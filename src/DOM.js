@@ -295,14 +295,15 @@ export function appendTasksFromLocalStorage(sortedKeys){
     });
 }
 
-export function createProject(){
+export function appendProjectToSideMenu(projectObject){
     const projects = document.querySelector('.projects');
     const projectPopup = document.querySelector('.add-project-pop-up');
     const projectName = document.querySelector('.project-name');
 
     const project = document.createElement('button');
-    project.classList.add(projectName.value);
-    project.textContent = projectName.value;
+    project.classList.add('project');
+    project.classList.add('project-' + projectObject.title);
+    project.textContent = projectObject.title;
 
     projects.insertBefore(project, projectPopup);
 

@@ -17,7 +17,7 @@ let taskList = (()=>{
     if(localStorage.length>0){
         let keys = Object.keys(localStorage);
         keys.forEach((value, index, obj)=>{
-            if(value.includes('Task')){
+            if(!isNaN(parseInt(value))){
                 tasks.push(JSON.parse(localStorage.getItem(value)));
             }
         })
@@ -32,6 +32,9 @@ let taskList = (()=>{
 export function createTaskObject(formData){
     let task = new Task(formData.title, formData.description,formData.dueDate,formData.priority);
     taskList.tasks.push(task)
+    taskList.tasks.forEach((value, index, obj)=>{
+        console.log(value);
+    })
     addTaskToLocalStorage();
 
     appendTask(task);

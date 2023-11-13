@@ -1,5 +1,6 @@
-import { showTaskFormDialog, changeCurrentPage, appendTask, createProject } from "./DOM";
+import { showTaskFormDialog, changeCurrentPage, appendTask, appendProjectToSideMenu } from "./DOM";
 import { createTaskObject } from "./inbox";
+import { createProjectObject } from "./project";
 
 //Logic for hiding and showing menu on btn click
 export function hideandShowSideMenu(){
@@ -200,23 +201,37 @@ export function getKeysFromLocalStorage(){
     if(localStorage.length > 0){
         let keys = Object.keys(localStorage);
         let sortedKeys = [];
+        let projectKeys = [];
         keys.forEach((value, index, obj)=>{
-            sortedKeys.push(Number(value));
+            if(isNaN(value)){
+                projectKeys.push(value);
+            }
+            else{sortedKeys.push(Number(value));}
         });
         sortedKeys.sort((a,b)=>{
             return a - b;
         });
-        return sortedKeys;
+
+        return {
+            taskKeys: sortedKeys,
+            projectKeyList: projectKeys
+        }
     }
 }
 
 export function checkLocalStorage(){
 
-    let sortedKeys = getKeysFromLocalStorage();
+    let keys = getKeysFromLocalStorage();
+    let sortedKeys = keys.taskKeys;
+    let projectKeys = keys.projectKeyList;
 
     sortedKeys.forEach((value, index, obj)=>{
         appendTask(JSON.parse(localStorage.getItem(value)));
-    })
+    });
+
+    projectKeys.forEach((value, index, obj)=>{
+        appendProjectToSideMenu(JSON.parse(localStorage.getItem(value)));
+    });
 }
 
 export function showProjectPopupEvent(){
@@ -226,9 +241,14 @@ export function showProjectPopupEvent(){
 
 export function createProjectEvent(){
     const addProjectsPopup = document.querySelector('.add-project-pop-up');
-    const projectName = document.querySelector('.project-name')
+    const projectName = document.querySelector('.project-name');
     if(projectName.value !== ''){
         addProjectsPopup.classList.toggle('hidden');
-        createProject();
+        createProjectObject(projectName.value);
     }
+}
+
+export function cancelProjectEvent(){
+    const addProjectsPopup = document.querySelector('.add-project-pop-up');
+    addProjectsPopup.classList.toggle('hidden');
 }
