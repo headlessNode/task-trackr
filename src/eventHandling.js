@@ -164,36 +164,71 @@ export function pageChangeEvent(e){
     const inboxBtn = document.querySelector('.inbox');
     const todayBtn = document.querySelector('.today');
     const upcomingBtn = document.querySelector('.upcoming');
+    const projectBtns = document.querySelectorAll('.project');
     let inboxClicked;
     let todayClicked;
     let upcomingClicked;
+    let projectBtnClicked;
 
-    if(e.target.textContent === 'Inbox'){
+    console.log(e.currentTarget);
+
+    if(e.currentTarget.textContent === 'Inbox'){
         inboxBtn.classList.add('clicked');
         todayBtn.classList.remove('clicked');
         upcomingBtn.classList.remove('clicked');
+        projectBtns.forEach((btn)=>{
+            if(btn.classList.contains('clicked')){
+                btn.classList.remove('clicked');
+            }
+        })
         inboxClicked = true;
         todayClicked = false;
         upcomingClicked = false;
     }
-    else if (e.target.textContent === 'Today'){
+    else if (e.currentTarget.textContent === 'Today'){
         todayBtn.classList.add('clicked');
         inboxBtn.classList.remove('clicked');
         upcomingBtn.classList.remove('clicked');
+        projectBtns.forEach((btn)=>{
+            if(btn.classList.contains('clicked')){
+                btn.classList.remove('clicked');
+            }
+        })
         inboxClicked = false;
         todayClicked = true;
         upcomingClicked = false;
     }
-    else if(e.target.textContent === 'Upcoming'){
+    else if(e.currentTarget.textContent === 'Upcoming'){
         upcomingBtn.classList.add('clicked');
         todayBtn.classList.remove('clicked');
         inboxBtn.classList.remove('clicked');
+        projectBtns.forEach((btn)=>{
+            if(btn.classList.contains('clicked')){
+                btn.classList.remove('clicked');
+            }
+        });
         inboxClicked = false;
         todayClicked = false;
         upcomingClicked = true;
     }
+    
+    else if(e.currentTarget.classList.contains('project')){
+        projectBtns.forEach((btn)=>{
+            if(btn.classList.contains('clicked')){
+                btn.classList.remove('clicked');
+            }
+        });
+        upcomingBtn.classList.remove('clicked');
+        todayBtn.classList.remove('clicked');
+        inboxBtn.classList.remove('clicked');
+        e.currentTarget.classList.add('clicked');
+        inboxClicked = false;
+        todayClicked = false;
+        upcomingClicked = false;
+        projectBtnClicked = true;
+    }
 
-    changeCurrentPage(inboxClicked, todayClicked, upcomingClicked);
+    changeCurrentPage(inboxClicked, todayClicked, upcomingClicked, projectBtnClicked);
 
 }
 

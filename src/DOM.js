@@ -2,6 +2,8 @@ import { addProjectEvent } from "./eventHandling.js";
 import {createInboxPage} from "./inbox.js";
 import {createTodayPage} from "./today.js";
 import {createUpcomingPage} from "./upcoming.js";
+import {createProjectPage} from "./project.js";
+import {addListenerToProjectBtns} from "./index.js";
 
 //append element to the webpage
 export function appendToPage(element){
@@ -260,7 +262,7 @@ export function appendTask(task){
 
 }
 
-export function changeCurrentPage(inboxClicked, todayClicked, upcomingClicked){
+export function changeCurrentPage(inboxClicked, todayClicked, upcomingClicked, projectBtnClicked){
 
     const mainBody = document.querySelector('.main-body');
     
@@ -279,7 +281,9 @@ export function changeCurrentPage(inboxClicked, todayClicked, upcomingClicked){
     else if(upcomingClicked){    
         createUpcomingPage();
     }
-
+    else if(projectBtnClicked){
+        createProjectPage();
+    }
  
 }
 
@@ -301,14 +305,18 @@ export function appendProjectToSideMenu(projectObject){
     const projectName = document.querySelector('.project-name');
 
     const project = document.createElement('button');
+    project.setAttribute('id', 'project-btn');
     project.classList.add('project');
     project.classList.add('project-' + projectObject.title);
+    project.setAttribute('id', 'project-btn');
     const text = document.createElement('p');
     text.textContent = projectObject.title;
+    text.setAttribute('id', 'project-btn');
     project.appendChild(text);
     const icon = document.createElement('div');
     icon.classList.add('project-icon');
     icon.innerHTML = '<i class="fa-solid fa-circle" style="color: #5590f7;"></i>';
+    icon.setAttribute('id', 'project-btn');
     project.appendChild(icon);
     projects.insertBefore(project, projectPopup);
 

@@ -43,3 +43,7 @@ export function addProjectToLocalStorage(){
     })
 
 }
+
+export function createProjectPage(){
+    console.log('Project page');
+}
