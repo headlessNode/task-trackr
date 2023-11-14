@@ -1,5 +1,5 @@
 import { appendProjectToDialog, appendProjectToSideMenu, appendTasksFromLocalStorage } from "./DOM";
-import { getKeysFromLocalStorage } from "./eventHandling";
+import { getKeysFromLocalStorage, deleteTaskEvent } from "./eventHandling";
 
 class Project  {
     constructor(title){
@@ -47,7 +47,6 @@ export function addProjectToLocalStorage(){
 }
 
 export function createProjectPage(projectBtnClicked){
-    console.log(projectBtnClicked.element);
     let keys = getKeysFromLocalStorage();
     let projectKeys = keys.projectKeys;
     let taskKeys = keys.taskKeys;
@@ -81,5 +80,9 @@ export function createProjectPage(projectBtnClicked){
     });
 
     appendTasksFromLocalStorage(projectTasks);
-
+    //task delete event
+    const taskDeleteBtn = document.querySelectorAll('.task-delete-btn');
+    taskDeleteBtn.forEach((btn)=>{
+        btn.addEventListener('click', deleteTaskEvent);
+    });
 }

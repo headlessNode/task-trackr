@@ -64,7 +64,7 @@
 .task-container{
     position: relative;
     display: grid;
-    grid-template-columns: 20px 3fr 90px 30px;
+    grid-template-columns: 20px 3fr 90px 30px 30px;
     height: 100px;
     align-items: center;
 }
@@ -116,6 +116,24 @@
 
 .tooltip:hover .tooltip-text {
     visibility: visible;
+}
+
+.task-delete-btn{
+    height: 30px;
+    width: 30px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.task-container:hover{
+    .task-delete-btn{
+        display: flex;
+    }
 }
 
 @media screen and (max-width: 370px) {

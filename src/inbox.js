@@ -1,5 +1,5 @@
 import { appendTask, appendTasksFromLocalStorage } from "./DOM";
-import { getKeysFromLocalStorage } from "./eventHandling";
+import { getKeysFromLocalStorage, deleteTaskEvent } from "./eventHandling";
 
 class Task {
     constructor(title, description, dueDate, priority, project){
@@ -9,6 +9,8 @@ class Task {
         this.priority = priority;
         this.project = project;
     }
+
+
 };
 
 let taskList = (()=>{
@@ -59,18 +61,25 @@ export function createInboxPage(){
     mainBody.appendChild(mainBodyHeader);
     mainBody.appendChild(mainBodyContent);
     
-    let keys = getKeysFromLocalStorage();
-    let taskKeys = keys.taskKeys;
-    let parsedObjects = [];
-    let inboxTasks = [];
+    if(localStorage.length > 0){
+        let keys = getKeysFromLocalStorage();
+        let taskKeys = keys.taskKeys;
+        let parsedObjects = [];
+        let inboxTasks = [];
 
-    taskKeys.forEach((value,index,obj)=>{
-        parsedObjects.push(JSON.parse(localStorage.getItem(value)));
-    });
-    parsedObjects.forEach((value, index, obj)=>{
-        if(value.project === ''){
-            inboxTasks.push(value);
-        }
-    });
-    appendTasksFromLocalStorage(inboxTasks);
+        taskKeys.forEach((value,index,obj)=>{
+            parsedObjects.push(JSON.parse(localStorage.getItem(value)));
+        });
+        parsedObjects.forEach((value, index, obj)=>{
+            if(value.project === ''){
+                inboxTasks.push(value);
+            }
+        });
+        appendTasksFromLocalStorage(inboxTasks);
+        //task delete event
+        const taskDeleteBtn = document.querySelectorAll('.task-delete-btn');
+        taskDeleteBtn.forEach((btn)=>{
+            btn.addEventListener('click', deleteTaskEvent);
+        }); 
+    }   
 }

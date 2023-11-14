@@ -1,6 +1,6 @@
 import './styles/style.css'
 import { appendToPage,createPageHeader,createMainBody,createSideMenu, createFooter, taskInfoDialog, createProjectPopUp } from './DOM'
-import { hideandShowSideMenu,listenToScreenChanges,showTaskDialog, dialogSubmitEvent, dialogEscEvent, pageChangeEvent, checkLocalStorage, addProjectEvent, createProjectEvent, cancelProjectEvent, showProjectPopupEvent } from './eventHandling';
+import { hideandShowSideMenu,listenToScreenChanges,showTaskDialog, dialogSubmitEvent, dialogEscEvent, pageChangeEvent, checkLocalStorage, addProjectEvent, createProjectEvent, cancelProjectEvent, showProjectPopupEvent, deleteTaskEvent } from './eventHandling';
 
 const pageHeader = createPageHeader();
 const mainBody = createMainBody();
@@ -60,6 +60,12 @@ const events = (()=>{
         if(btn.classList.contains('project')){
             btn.addEventListener('click', pageChangeEvent);
         }
+    });
+
+    //task delete event
+    const taskDeleteBtn = document.querySelectorAll('.task-delete-btn');
+    taskDeleteBtn.forEach((btn)=>{
+        btn.addEventListener('click', deleteTaskEvent);
     });
 
 })();

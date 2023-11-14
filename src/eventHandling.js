@@ -153,7 +153,6 @@ export function dialogEscEvent(event){
 }
 
 export function showTaskDialog(){
-    console.log('addTaskBtn clicked');
     //call the function in DOM.js which displays dialog for adding task information and return that information.
     showTaskFormDialog();
     //call the function in inbox.js which creates a task based on the information received from the DOM.js
@@ -298,4 +297,61 @@ export function createProjectEvent(){
 export function cancelProjectEvent(){
     const addProjectsPopup = document.querySelector('.add-project-pop-up');
     addProjectsPopup.classList.toggle('hidden');
+}
+
+export function deleteTaskEvent(e){
+    const mainBodyContent = document.querySelector('.main-body-content'); 
+    const taskContainer = e.currentTarget.parentElement;
+    const taskDetails = taskContainer.querySelector('.task-details');
+
+    const keys = getKeysFromLocalStorage();
+    const taskKeys = keys.taskKeys;
+    const projectKeys = keys.projectKeyList;
+
+    const keysToModify = [];
+
+    taskKeys.forEach((value,index, obj)=>{
+        //parse the objects
+        let task = JSON.parse(localStorage.getItem(value));
+        //remove the object you want
+        if(task.project === ''){
+            if(task.title === taskDetails.textContent){
+                localStorage.removeItem(value);
+                mainBodyContent.removeChild(taskContainer);
+            }
+            else{
+                keysToModify.push(value);
+            }
+        }
+        else{
+            const taskText = taskDetails.textContent;
+            const pattern = /\s*\([^)]*\)\s*/g;
+            const elementTitle = taskText.replace(pattern, '');
+            console.log(elementTitle);
+            if(task.title === elementTitle){
+                localStorage.removeItem(value);
+                mainBodyContent.removeChild(taskContainer);
+            }
+            //set the new ordered task keys and add them to the local storage
+            else{
+                keysToModify.push(value);
+            }
+        }
+    });
+
+    keysToModify.forEach((value,index, obj)=>{
+        console.log(value);
+        if(value != index){
+            localStorage.setItem(index.toString(), localStorage.getItem(value));
+            localStorage.removeItem(value);
+        }
+        else{
+            localStorage.setItem(index.toString(), localStorage.getItem(value));
+        }
+        
+    })
+
+    // projectKeys.forEach((value, index, obj)=>{
+    //     console.log(value);
+    // });
 }

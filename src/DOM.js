@@ -274,6 +274,12 @@ export function appendTask(task){
     }
     taskContainer.appendChild(taskPriority);
 
+    //delete button
+    const taskDelete = document.createElement('button');
+    taskDelete.classList.add('task-delete-btn');
+    taskDelete.innerHTML = '<i class="fa-solid fa-trash fa-lg" style="color: #ad0000;"></i>';
+    taskContainer.appendChild(taskDelete);
+
     mainBodyContent.appendChild(taskContainer);
 
 }
@@ -305,7 +311,6 @@ export function changeCurrentPage(inboxClicked, todayClicked, upcomingClicked, p
 
 export function appendTasksFromLocalStorage(sortedKeys){
     sortedKeys.forEach((value, index, obj)=>{
-        console.log(typeof(value));
         if(typeof value === 'number'){
             appendTask(JSON.parse(localStorage.getItem(value)));
         }
