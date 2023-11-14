@@ -163,7 +163,7 @@ export function taskInfoDialog(){
     //PRIORITY
     const priority = document.createElement('fieldset');
     const priorityLegend = document.createElement('legend');    
-    priorityLegend.textContent = 'Select task priority:';
+    priorityLegend.textContent = 'Select task priority';
     priority.appendChild(priorityLegend);    
     //high priority
     const high = document.createElement('div');
@@ -181,7 +181,20 @@ export function taskInfoDialog(){
     low.innerHTML = '<input type="radio" id="low" name="priority" value="low" /><label for="low">Low</label>';
     priority.appendChild(low);
 
-
+    //Project dropdown
+    const projectDropDownField = document.createElement('fieldset');
+    projectDropDownField.setAttribute('id', 'project-drop-down');
+    const projectDropDownLegend = document.createElement('legend');    
+    projectDropDownLegend.textContent = 'Assign task to a project';
+    projectDropDownField.appendChild(projectDropDownLegend);
+    const selectContainer = document.createElement('select');
+    selectContainer.setAttribute('name', 'project');
+    selectContainer.setAttribute('id', 'project-select');
+    const defaultOption = document.createElement('option');
+    defaultOption.textContent = 'Select a project';
+    defaultOption.setAttribute('value', '');
+    selectContainer.appendChild(defaultOption);
+    projectDropDownField.appendChild(selectContainer);
 
     //SUBMIT BTN
     const submit = document.createElement('button');
@@ -193,6 +206,7 @@ export function taskInfoDialog(){
     dialogForm.appendChild(description);
     dialogForm.appendChild(dueDate);
     dialogForm.appendChild(priority);
+    dialogForm.appendChild(projectDropDownField);
     dialogForm.appendChild(submit);
 
     dialog.appendChild(dialogForm);
@@ -233,6 +247,7 @@ export function appendTask(task){
     taskDetails.classList.add('task-details');
 
     taskDetails.textContent = task.title;
+    
     taskContainer.appendChild(taskDetails);
     //task duedate
     const taskDueDate = document.createElement('p');
@@ -243,7 +258,8 @@ export function appendTask(task){
     const day = parts[2];
     const date = `${day}-${month}-${year}`;
     taskDueDate.textContent = date;
-    taskContainer.appendChild(taskDueDate);    
+    taskContainer.appendChild(taskDueDate);
+    
     //task priority
     const taskPriority = document.createElement('p');
     taskPriority.classList.add('task-priority');
@@ -320,4 +336,14 @@ export function appendProjectToSideMenu(projectObject){
     project.appendChild(icon);
     projects.insertBefore(project, projectPopup);
 
+}
+
+export function appendProjectToDialog(projectObject){
+    const dialogFrom = document.querySelector('.dialog-form');
+    const projectDropDown = document.querySelector('.project-drop-down');
+    const projectSelect = document.querySelector('#project-select');
+    const projectOption = document.createElement('option');
+    projectOption.textContent = projectObject.title;
+    projectOption.setAttribute('value', projectObject.title);
+    projectSelect.appendChild(projectOption);
 }

@@ -19,10 +19,6 @@ checkLocalStorage();
 //EVENTS
 const events = (()=>{
 
-    // //page load event
-    // document.addEventListener('DOMContentLoaded', checkLocalStorage)
-
-
     //menu btn event
     const menuBtn = document.querySelector('.menu-btn');
     menuBtn.addEventListener('click', hideandShowSideMenu);

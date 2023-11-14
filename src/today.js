@@ -30,7 +30,6 @@ export function createTodayPage(){
         parsedObjects.push(JSON.parse(localStorage.getItem(value)));
     });
     parsedObjects.forEach((value, index, obj)=>{
-        console.log(value);
         //check the duedate of each object and compare it to current date
         const taskDateParts = value.dueDate.split('-');
         const taskYear = taskDateParts[0];
@@ -42,6 +41,9 @@ export function createTodayPage(){
         console.log(CurrentDate);
 
         if(taskDate === CurrentDate){
+            if(value.project != ''){
+                value.title = value.title + ' (Project: ' + value.project + ')';
+            }
             todayTasks.push(value);
         }
     });

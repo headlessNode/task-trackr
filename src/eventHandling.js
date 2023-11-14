@@ -1,5 +1,5 @@
-import { showTaskFormDialog, changeCurrentPage, appendTask, appendProjectToSideMenu } from "./DOM";
-import { createTaskObject } from "./inbox";
+import { showTaskFormDialog, changeCurrentPage, appendTask, appendProjectToSideMenu, appendProjectToDialog } from "./DOM";
+import { createTaskObject, createInboxPage } from "./inbox";
 import { createProjectObject } from "./project";
 
 //Logic for hiding and showing menu on btn click
@@ -262,17 +262,23 @@ export function getKeysFromLocalStorage(){
 
 export function checkLocalStorage(){
 
-    let keys = getKeysFromLocalStorage();
-    let sortedKeys = keys.taskKeys;
-    let projectKeys = keys.projectKeyList;
+    if(localStorage.length > 0){
+        let keys = getKeysFromLocalStorage();
+        let sortedKeys = keys.taskKeys;
+        let projectKeys = keys.projectKeyList;
 
-    sortedKeys.forEach((value, index, obj)=>{
-        appendTask(JSON.parse(localStorage.getItem(value)));
-    });
+        sortedKeys.forEach((value, index, obj)=>{
+            let task = JSON.parse(localStorage.getItem(value));
+            if(task.project === ''){
+                appendTask(task);
+            }
+        });
 
-    projectKeys.forEach((value, index, obj)=>{
-        appendProjectToSideMenu(JSON.parse(localStorage.getItem(value)));
-    });
+        projectKeys.forEach((value, index, obj)=>{
+            appendProjectToSideMenu(JSON.parse(localStorage.getItem(value)));
+            appendProjectToDialog(JSON.parse(localStorage.getItem(value)));
+        });
+    }
 }
 
 export function showProjectPopupEvent(){

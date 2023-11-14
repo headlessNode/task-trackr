@@ -39,6 +39,9 @@ export function createUpcomingPage(){
         console.log(CurrentDate);
 
         if(taskDate > CurrentDate){
+            if(value.project != ''){
+                value.title = value.title + ' (Project: ' + value.project + ')';
+            }
             upcomingTasks.push(value);
         }
     });

@@ -1,4 +1,4 @@
-import { appendProjectToSideMenu } from "./DOM";
+import { appendProjectToDialog, appendProjectToSideMenu, appendTasksFromLocalStorage } from "./DOM";
 import { getKeysFromLocalStorage } from "./eventHandling";
 
 class Project  {
@@ -30,6 +30,7 @@ export function createProjectObject(projectTitle){
     addProjectToLocalStorage();
 
     appendProjectToSideMenu(project);
+    appendProjectToDialog(project);
 
 }
 
@@ -49,6 +50,7 @@ export function createProjectPage(projectBtnClicked){
     console.log(projectBtnClicked.element);
     let keys = getKeysFromLocalStorage();
     let projectKeys = keys.projectKeys;
+    let taskKeys = keys.taskKeys;
     let project = projectBtnClicked.element;
 
     const mainBody = document.querySelector('.main-body');
@@ -61,5 +63,23 @@ export function createProjectPage(projectBtnClicked){
     mainBody.appendChild(mainBodyHeader);
     mainBody.appendChild(mainBodyContent);
 
+    let parsedObjects = [];
+    let projectTasks = [];
+
+    taskKeys.forEach((value,index,obj)=>{
+        parsedObjects.push(JSON.parse(localStorage.getItem(value)));
+    });
+    parsedObjects.forEach((value, index, obj)=>{
+        if(value.project != undefined){
+            if(value.project === project.textContent){
+                let originalTitle = value.title;
+                let splitTitle = originalTitle.split(' (Project:')[0].trim();
+                value.title = splitTitle;
+                projectTasks.push(value);
+            }
+        }
+    });
+
+    appendTasksFromLocalStorage(projectTasks);
 
 }

@@ -2,11 +2,12 @@ import { appendTask, appendTasksFromLocalStorage } from "./DOM";
 import { getKeysFromLocalStorage } from "./eventHandling";
 
 class Task {
-    constructor(title, description, dueDate, priority){
+    constructor(title, description, dueDate, priority, project){
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.project = project;
     }
 };
 
@@ -30,14 +31,12 @@ let taskList = (()=>{
 })();
 
 export function createTaskObject(formData){
-    let task = new Task(formData.title, formData.description,formData.dueDate,formData.priority);
+    let task = new Task(formData.title, formData.description,formData.dueDate,formData.priority, formData.project);
     taskList.tasks.push(task)
-    taskList.tasks.forEach((value, index, obj)=>{
-        console.log(value);
-    })
     addTaskToLocalStorage();
-
-    appendTask(task);
+    if(task.project === ''){
+        appendTask(task);
+    }
 }
 
 function addTaskToLocalStorage(){
@@ -62,5 +61,16 @@ export function createInboxPage(){
     
     let keys = getKeysFromLocalStorage();
     let taskKeys = keys.taskKeys;
-    appendTasksFromLocalStorage(taskKeys);
+    let parsedObjects = [];
+    let inboxTasks = [];
+
+    taskKeys.forEach((value,index,obj)=>{
+        parsedObjects.push(JSON.parse(localStorage.getItem(value)));
+    });
+    parsedObjects.forEach((value, index, obj)=>{
+        if(value.project === ''){
+            inboxTasks.push(value);
+        }
+    });
+    appendTasksFromLocalStorage(inboxTasks);
 }
