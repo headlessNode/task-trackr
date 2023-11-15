@@ -1,4 +1,4 @@
-import { deleteTaskEvent, taskCompleteEvent } from "./eventHandling.js";
+import { deleteTaskEvent, deleteProjectEvent, pageChangeEvent } from "./eventHandling.js";
 import {createInboxPage} from "./inbox.js";
 import {createTodayPage} from "./today.js";
 import {createUpcomingPage} from "./upcoming.js";
@@ -333,6 +333,7 @@ export function appendProjectToSideMenu(projectObject){
     project.classList.add('project');
     project.classList.add('project-' + projectObject.title);
     project.setAttribute('id', 'project-btn');
+    project.addEventListener('click', pageChangeEvent);
     const text = document.createElement('p');
     text.textContent = projectObject.title;
     text.setAttribute('id', 'project-btn');
@@ -342,6 +343,13 @@ export function appendProjectToSideMenu(projectObject){
     icon.innerHTML = '<i class="fa-solid fa-circle" style="color: #5590f7;"></i>';
     icon.setAttribute('id', 'project-btn');
     project.appendChild(icon);
+    //delete button
+    const projectDelete = document.createElement('button');
+    projectDelete.classList.add('project-delete-btn');
+    projectDelete.innerHTML = '<i class="fa-solid fa-trash" style="color: #ad0000;"></i>';
+    project.appendChild(projectDelete);
+    projectDelete.addEventListener('click', deleteProjectEvent);    
+
     projects.insertBefore(project, projectPopup);
 
 }

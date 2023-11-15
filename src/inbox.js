@@ -13,28 +13,43 @@ class Task {
 
 };
 
-let taskList = (()=>{
+let tasks = {
+    taskList: [],
 
-    let tasks = [];
+    updateTaskList: () => {
+        if (localStorage.length > 0) {
+            let keys = getKeysFromLocalStorage();
+            let taskKeys = keys.taskKeys;
+            let parsedObjects = [];
 
-    if(localStorage.length>0){
-        let keys = Object.keys(localStorage);
-        keys.forEach((value, index, obj)=>{
-            if(!isNaN(parseInt(value))){
-                tasks.push(JSON.parse(localStorage.getItem(value)));
+            if(taskKeys.length > 0){
+                taskKeys.forEach((value) => {
+                    parsedObjects.push(JSON.parse(localStorage.getItem(value)));
+                });
+    
+                parsedObjects.forEach((value) => {
+                    const existingTask = tasks.taskList.find((taskListValue) => taskListValue.title === value.title);
+                    if (!existingTask) {
+                        tasks.taskList.push(value);
+                    }
+                });
             }
-        })
-        return {tasks};
+        }
+        else{
+            tasks.taskList = [];
+        }
     }
-    else{
-        return {tasks};
-    }
+};
 
-})();
+
+tasks.updateTaskList();
+
+export{tasks};
 
 export function createTaskObject(formData){
+    tasks.updateTaskList();
     let task = new Task(formData.title, formData.description,formData.dueDate,formData.priority, formData.project);
-    taskList.tasks.push(task)
+    tasks.taskList.push(task)
     addTaskToLocalStorage();
     if(task.project === ''){
         appendTask(task);
@@ -42,7 +57,7 @@ export function createTaskObject(formData){
 }
 
 function addTaskToLocalStorage(){
-    taskList.tasks.forEach((value, index, obj )=>{
+    tasks.taskList.forEach((value, index, obj )=>{
         if(localStorage.getItem(index) === null){
             let taskString = JSON.stringify(value);
             localStorage.setItem(index, taskString);

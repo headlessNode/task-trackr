@@ -7,25 +7,35 @@ class Project  {
     }
 }
 
-let projects = (()=>{
-    let projectList = [];
-    if(localStorage.length>0){
-        let keys = Object.keys(localStorage);
-        keys.forEach((value, index, obj)=>{
-            if(value.includes('Project')){
-                projectList.push(JSON.parse(localStorage.getItem(value)));
-            }
-        })
-        return {projectList};
+let projects = {
+    projectList: [],
+
+    updateProjectList: ()=>{
+        if(localStorage.length>0){
+            let keys = Object.keys(localStorage);
+            keys.forEach((value, index, obj)=>{
+                if(value.includes('Project')){
+                    projects.projectList.push(JSON.parse(localStorage.getItem(value)));
+                }
+            })
+        }
+        else{
+            projects.projectList = [];
+        }   
     }
-    else{
-        return {projectList};
-    }
-})();
+
+};
+
+projects.updateProjectList();
+
+export {projects};
 
 export function createProjectObject(projectTitle){
-
+    projects.updateProjectList();
     let project = new Project(projectTitle);
+    projects.projectList.forEach((value)=>{
+        console.log(value);
+    })
     projects.projectList.push(project);
     addProjectToLocalStorage();
 

@@ -1,6 +1,6 @@
 import { showTaskFormDialog, changeCurrentPage, appendTask, appendProjectToSideMenu, appendProjectToDialog } from "./DOM";
-import { createTaskObject, createInboxPage } from "./inbox";
-import { createProjectObject } from "./project";
+import { createTaskObject, createInboxPage,tasks } from "./inbox";
+import { createProjectObject, projects } from "./project";
 
 //Logic for hiding and showing menu on btn click
 export function hideandShowSideMenu(){
@@ -133,17 +133,22 @@ export function dialogSubmitEvent(event){
 }
 
 function checkDuplicateTask(formDataObject) {
-    const titleInput = document.querySelector('input[name="title"]');
-    let keys = getKeysFromLocalStorage();
-    let taskKeys = keys.taskKeys;
-    let parsedObjects = [];
-    taskKeys.forEach((value,index,obj)=>{
-        parsedObjects.push(JSON.parse(localStorage.getItem(value)));
-    });
-
-    if (parsedObjects.some(value => formDataObject.title.toLowerCase() === value.title.toLowerCase())) {
-        titleInput.style.border = '1px solid red';
-        return true;
+    if(localStorage.length > 0){
+        const titleInput = document.querySelector('input[name="title"]');
+        let keys = getKeysFromLocalStorage();
+        let taskKeys = keys.taskKeys;
+        let parsedObjects = [];
+        taskKeys.forEach((value,index,obj)=>{
+            parsedObjects.push(JSON.parse(localStorage.getItem(value)));
+        });
+    
+        if (parsedObjects.some(value => formDataObject.title.toLowerCase() === value.title.toLowerCase())) {
+            titleInput.style.border = '1px solid red';
+            return true;
+        }
+        else{
+            return false;
+        }    
     }
     else{
         return false;
@@ -322,19 +327,21 @@ export function createProjectEvent(){
 }
 
 function checkProjectDuplicate(){
-    const projectName = document.querySelector('.project-name');
-    let keys = getKeysFromLocalStorage();
-    let projectKeys = keys.projectKeyList;
-    let parsedObjects = [];
-    projectKeys.forEach((value,index,obj)=>{
-        parsedObjects.push(JSON.parse(localStorage.getItem(value)));
-    });
-    if (parsedObjects.some(value => projectName.value.toLowerCase() === value.title.toLowerCase())) {
-        projectName.style.border = '1px solid red';
-        return true;
-    }
-    else{
-        return false;
+    if(localStorage.length > 0){
+        const projectName = document.querySelector('.project-name');
+        let keys = getKeysFromLocalStorage();
+        let projectKeys = keys.projectKeyList;
+        let parsedObjects = [];
+        projectKeys.forEach((value,index,obj)=>{
+            parsedObjects.push(JSON.parse(localStorage.getItem(value)));
+        });
+        if (parsedObjects.some(value => projectName.value.toLowerCase() === value.title.toLowerCase())) {
+            projectName.style.border = '1px solid red';
+            return true;
+        }
+        else{
+            return false;
+        }        
     }
 }
 
@@ -388,10 +395,65 @@ export function deleteTaskEvent(e){
         if(value != index){
             localStorage.setItem(index.toString(), localStorage.getItem(value));
             localStorage.removeItem(value);
+            tasks.updateTaskList();
         }
         else{
             localStorage.setItem(index.toString(), localStorage.getItem(value));
+            tasks.updateTaskList();
         }
         
     })
+}
+
+export function deleteProjectEvent(e){
+    e.stopPropagation();
+    console.log(e.currentTarget);
+    const project = e.currentTarget.parentElement;
+    const mainBody = document.querySelector('.main-body');
+
+    const keys = getKeysFromLocalStorage();
+    const projectKeys = keys.projectKeyList;
+    const parsedObjects = [];
+    projectKeys.forEach((value,index,obj)=>{
+        parsedObjects.push(JSON.parse(localStorage.getItem(value)));
+    })
+    parsedObjects.forEach((value,index,obj)=>{
+        if(value.title === project.textContent){
+            localStorage.removeItem('Project-'+value.title);
+            projects.updateProjectList();
+            //remove the target project button
+            const parent = project.parentElement;
+            parent.removeChild(project);
+            //remove all children of if first childs' textcontent = value.title
+            if(mainBody.firstChild.textContent === project.textContent){
+                removeTasksFromProjectPage(project);
+                removeProjectPage();
+            }
+        }
+    });
+
+}
+
+function removeTasksFromProjectPage(project){
+    //remove from page
+    const mainBodyContent = document.querySelector('.main-body-content');
+    for(let i=0; i<mainBodyContent.childElementCount; i++){
+        mainBodyContent.removeChild(mainBodyContent.firstChild);
+    }
+    //remove corresponding tasks from localStorage if available
+    const keys = getKeysFromLocalStorage();
+    const taskKeys = keys.taskKeys;
+    taskKeys.forEach((value,index,obj)=>{
+        let task = JSON.parse(localStorage.getItem(value));
+        if(task.project === project.textContent){
+            localStorage.removeItem(value);
+        }
+    });
+}
+
+function removeProjectPage(){
+    const mainBody = document.querySelector('.main-body');
+    for(let i=0; i<mainBody.childElementCount; i++){
+        mainBody.removeChild(mainBody.firstChild);
+    }
 }
