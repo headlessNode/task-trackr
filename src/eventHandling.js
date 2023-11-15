@@ -113,31 +113,56 @@ export function dialogSubmitEvent(event){
         formDataObject[key] = value;
     }
 
-    const currentDate = new Date();
-    const taskDate = new Date(formDataObject.dueDate);
-
-    currentDate.setHours(0,0,0,0);
-    taskDate.setHours(0,0,0,0);
-
-
-    if(taskDate < currentDate){
-        const dateInput = document.querySelector('input[type="date"]');
-        dateInput.style.border = '1px solid red';
-        
-    }
-    else{
+    let isDateValid = checkTaskDate(formDataObject);
+    let isTaskUnique = checkDuplicateTask(formDataObject);
+    if(!isDateValid && !isTaskUnique){
+        const titleInput = document.querySelector('input[name="title"]');
         const dateInput = document.querySelector('input[type="date"]');
         dateInput.style.border = 'none';
         dateInput.style.borderBottom = '1px solid black';
+        titleInput.style.border = 'none';
+        titleInput.style.borderBottom = '1px solid black';
         //hide/remove the dialog
         dialog.close();
         dialog.style.top = '50%';
         dialog.style.opacity = '0';
         dialog.style.display = 'none';
-
-        createTaskObject(formDataObject);   
+        createTaskObject(formDataObject);
     }
 
+}
+
+function checkDuplicateTask(formDataObject) {
+    const titleInput = document.querySelector('input[name="title"]');
+    let keys = getKeysFromLocalStorage();
+    let taskKeys = keys.taskKeys;
+    let parsedObjects = [];
+    taskKeys.forEach((value,index,obj)=>{
+        parsedObjects.push(JSON.parse(localStorage.getItem(value)));
+    });
+
+    if (parsedObjects.some(value => formDataObject.title === value.title)) {
+        titleInput.style.border = '1px solid red';
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function checkTaskDate(formDataObject){
+    const dateInput = document.querySelector('input[type="date"]');
+    const currentDate = new Date();
+    const taskDate = new Date(formDataObject.dueDate);
+    currentDate.setHours(0,0,0,0);
+    taskDate.setHours(0,0,0,0);
+    if(taskDate < currentDate){
+        dateInput.style.border = '1px solid red';
+        return true;
+    }
+    else{
+        return false;   
+    }
 }
 
 export function dialogEscEvent(event){
