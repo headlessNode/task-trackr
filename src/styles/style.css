@@ -44,7 +44,6 @@
     grid-template-rows: max(50px) 8fr;
     padding: 0 1rem 0 1rem;
     margin-top: 20px;
-    border: 1px solid;
 }
 
 .main-body h2{
@@ -69,7 +68,6 @@
     grid-template-columns: 20px 3fr 90px 30px 30px;
     height: 100px;
     align-items: center;
-    border: 1px solid;
 }
 
 .task-duedate{
