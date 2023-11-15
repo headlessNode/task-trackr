@@ -378,7 +378,7 @@ export function deleteTaskEvent(e){
             const taskText = taskDetails.textContent;
             const pattern = /\s*\([^)]*\)\s*/g;
             const elementTitle = taskText.replace(pattern, '');
-            console.log(elementTitle);
+
             if(task.title === elementTitle){
                 localStorage.removeItem(value);
                 mainBodyContent.removeChild(taskContainer);
@@ -391,7 +391,7 @@ export function deleteTaskEvent(e){
     });
 
     keysToModify.forEach((value,index, obj)=>{
-        console.log(value);
+
         if(value != index){
             localStorage.setItem(index.toString(), localStorage.getItem(value));
             localStorage.removeItem(value);
@@ -402,12 +402,12 @@ export function deleteTaskEvent(e){
             tasks.updateTaskList();
         }
         
-    })
+    });
 }
 
 export function deleteProjectEvent(e){
     e.stopPropagation();
-    console.log(e.currentTarget);
+
     const project = e.currentTarget.parentElement;
     const mainBody = document.querySelector('.main-body');
 
@@ -421,6 +421,7 @@ export function deleteProjectEvent(e){
         if(value.title === project.textContent){
             localStorage.removeItem('Project-'+value.title);
             projects.updateProjectList();
+            removeProjectTasksFromLocalStorage(project);
             //remove the target project button
             const parent = project.parentElement;
             parent.removeChild(project);
@@ -441,13 +442,34 @@ function removeTasksFromProjectPage(project){
         mainBodyContent.removeChild(mainBodyContent.firstChild);
     }
     //remove corresponding tasks from localStorage if available
+    removeProjectTasksFromLocalStorage(project);
+}
+
+function removeProjectTasksFromLocalStorage(project){
     const keys = getKeysFromLocalStorage();
     const taskKeys = keys.taskKeys;
+    const keysToModify = [];
     taskKeys.forEach((value,index,obj)=>{
         let task = JSON.parse(localStorage.getItem(value));
         if(task.project === project.textContent){
             localStorage.removeItem(value);
         }
+        else{
+            keysToModify.push(value);
+        }
+    });
+    keysToModify.forEach((value,index, obj)=>{
+
+        if(value != index){
+            localStorage.setItem(index.toString(), localStorage.getItem(value));
+            localStorage.removeItem(value);
+            tasks.updateTaskList();
+        }
+        else{
+            localStorage.setItem(index.toString(), localStorage.getItem(value));
+            tasks.updateTaskList();
+        }
+        
     });
 }
 

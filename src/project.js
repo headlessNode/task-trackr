@@ -33,9 +33,6 @@ export {projects};
 export function createProjectObject(projectTitle){
     projects.updateProjectList();
     let project = new Project(projectTitle);
-    projects.projectList.forEach((value)=>{
-        console.log(value);
-    })
     projects.projectList.push(project);
     addProjectToLocalStorage();
 
