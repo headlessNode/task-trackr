@@ -76,10 +76,5 @@ export function createInboxPage(){
             }
         });
         appendTasksFromLocalStorage(inboxTasks);
-        //task delete event
-        const taskDeleteBtn = document.querySelectorAll('.task-delete-btn');
-        taskDeleteBtn.forEach((btn)=>{
-            btn.addEventListener('click', deleteTaskEvent);
-        }); 
     }   
 }

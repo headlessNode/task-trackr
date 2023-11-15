@@ -1,9 +1,8 @@
-import { addProjectEvent } from "./eventHandling.js";
+import { deleteTaskEvent } from "./eventHandling.js";
 import {createInboxPage} from "./inbox.js";
 import {createTodayPage} from "./today.js";
 import {createUpcomingPage} from "./upcoming.js";
 import {createProjectPage} from "./project.js";
-import {addListenerToProjectBtns} from "./index.js";
 
 //append element to the webpage
 export function appendToPage(element){
@@ -279,6 +278,7 @@ export function appendTask(task){
     taskDelete.classList.add('task-delete-btn');
     taskDelete.innerHTML = '<i class="fa-solid fa-trash fa-lg" style="color: #ad0000;"></i>';
     taskContainer.appendChild(taskDelete);
+    taskDelete.addEventListener('click', deleteTaskEvent);
 
     mainBodyContent.appendChild(taskContainer);
 
