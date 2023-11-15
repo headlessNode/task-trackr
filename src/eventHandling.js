@@ -141,7 +141,7 @@ function checkDuplicateTask(formDataObject) {
         parsedObjects.push(JSON.parse(localStorage.getItem(value)));
     });
 
-    if (parsedObjects.some(value => formDataObject.title === value.title)) {
+    if (parsedObjects.some(value => formDataObject.title.toLowerCase() === value.title.toLowerCase())) {
         titleInput.style.border = '1px solid red';
         return true;
     }
@@ -313,9 +313,28 @@ export function showProjectPopupEvent(){
 export function createProjectEvent(){
     const addProjectsPopup = document.querySelector('.add-project-pop-up');
     const projectName = document.querySelector('.project-name');
-    if(projectName.value !== ''){
+    const isProjectDuplicate = checkProjectDuplicate();
+    if(projectName.value !== '' && !isProjectDuplicate){
+        projectName.style.border = 'none';
         addProjectsPopup.classList.toggle('hidden');
         createProjectObject(projectName.value);
+    }
+}
+
+function checkProjectDuplicate(){
+    const projectName = document.querySelector('.project-name');
+    let keys = getKeysFromLocalStorage();
+    let projectKeys = keys.projectKeyList;
+    let parsedObjects = [];
+    projectKeys.forEach((value,index,obj)=>{
+        parsedObjects.push(JSON.parse(localStorage.getItem(value)));
+    });
+    if (parsedObjects.some(value => projectName.value.toLowerCase() === value.title.toLowerCase())) {
+        projectName.style.border = '1px solid red';
+        return true;
+    }
+    else{
+        return false;
     }
 }
 
