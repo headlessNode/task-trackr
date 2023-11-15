@@ -1,4 +1,4 @@
-import { deleteTaskEvent } from "./eventHandling.js";
+import { deleteTaskEvent, taskCompleteEvent } from "./eventHandling.js";
 import {createInboxPage} from "./inbox.js";
 import {createTodayPage} from "./today.js";
 import {createUpcomingPage} from "./upcoming.js";
@@ -241,6 +241,9 @@ export function appendTask(task){
     checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('name', 'task-checkbox');
     taskContainer.appendChild(checkbox);
+
+    checkbox.addEventListener('click', deleteTaskEvent);
+
     //task details
     const taskDetails = document.createElement('div');
     taskDetails.classList.add('task-details');

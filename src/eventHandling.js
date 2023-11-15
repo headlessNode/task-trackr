@@ -394,8 +394,4 @@ export function deleteTaskEvent(e){
         }
         
     })
-
-    // projectKeys.forEach((value, index, obj)=>{
-    //     console.log(value);
-    // });
 }

@@ -43,6 +43,8 @@
     grid-template-columns: repeat(2, 50px) auto;
     grid-template-rows: max(50px) 8fr;
     padding: 0 1rem 0 1rem;
+    margin-top: 20px;
+    border: 1px solid;
 }
 
 .main-body h2{
@@ -67,6 +69,7 @@
     grid-template-columns: 20px 3fr 90px 30px 30px;
     height: 100px;
     align-items: center;
+    border: 1px solid;
 }
 
 .task-duedate{
@@ -146,5 +149,19 @@
 @media screen and (max-width: 651px) {
     .main-body{
         padding: 0;
+    }
+}
+
+@media screen and (min-width: 1441px){
+    .content{
+        grid-template-columns: minmax(200px, 0.8fr) 5fr;
+        grid-template-rows: 100px auto 120px;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 2559px){
+    .content{
+        grid-template-columns: minmax(200px, 0.8fr) 5fr;
+        grid-template-rows: 80px auto 120px;
     }
 }
