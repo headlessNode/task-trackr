@@ -21,8 +21,22 @@
     height: 5.5rem;
     border-radius: 50%;
     align-self: center;
-    border: 8px solid rgba(var(--main-color), 1);
+    
+    border-left: solid rgba(var(--main-color), 1); 
+    border-right: solid rgba(var(--main-color), 1); 
+    border-bottom: solid rgba(var(--main-color), 1); 
+    border-top: solid rgba(var(--main-color), 1);
+    border-width: 3px 6px 6px 6px;
+
     transition: background 0.3s ease-in;
+    outline: none;
+}
+.footer .add-task-btn::before {
+    top: -8px;
+}
+
+.footer .add-task-btn::after {
+    bottom: -8px;
 }
 
 .footer .add-task-btn:hover{
