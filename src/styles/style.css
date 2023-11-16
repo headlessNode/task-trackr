@@ -60,6 +60,7 @@
     padding: 0 1rem 0 1rem;
     display: grid;
     grid-template-rows: repeat(6, 100px);
+    gap: 5px;
 }
 
 .task-container{
@@ -68,6 +69,8 @@
     grid-template-columns: 20px 3fr 90px 30px 30px;
     height: 100px;
     align-items: center;
+    padding-left: 10px;
+    border-bottom: 2px solid var(--main-border);
 }
 
 .task-duedate{
@@ -141,6 +144,11 @@
     .main-body-content{
         grid-column: 1/4;
         padding: 0 0 0 1rem;
+    }
+    .main-body h2{
+        width: 100px;
+        text-align: left;
+        padding-left: 5px;
     }
 }
 
