@@ -30,10 +30,6 @@ Features:
 * Adherence to SOLID principles for a robust and scalable codebase
 * Code bundling and optimization with Webpack
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 ### Built With
 
 This project is built with a variety of technologies to deliver a robust and efficient solution. Here are some key technologies employed:
@@ -47,11 +43,7 @@ This project is built with a variety of technologies to deliver a robust and eff
  [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 
  [![Webpack](https://img.shields.io/badge/Webpack-8DD6F9?style=for-the-badge&logo=webpack&logoColor=black)](https://webpack.js.org/)
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+ 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
