@@ -49,7 +49,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://github.com/headlessNode/task-trackr/blob/b7c1803101db6f4d3001557cf7972901801a363f/src/images/page-preview.png)
 
 A Todo List App, developed as a hands-on project to reinforce knowledge of local storage, streamline code bundling with Node.js and Webpack, and implement responsive design principles.
 
